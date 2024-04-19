@@ -2,10 +2,10 @@
 module.exports = {
   darkMode: ["class"],
   content: [
-    './pages/**/*.{js,jsx}',
-    './components/**/*.{js,jsx}',
-    './app/**/*.{js,jsx}',
-    './src/**/*.{js,jsx}',
+    "./pages/**/*.{js,jsx}",
+    "./components/**/*.{js,jsx}",
+    "./app/**/*.{js,jsx}",
+    "./src/**/*.{js,jsx}",
   ],
   prefix: "",
   theme: {
@@ -27,7 +27,34 @@ module.exports = {
       },
     },
     extend: {
+      backgroundImage: {
+        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+        "gradient-conic":
+          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        "contact-img": "url('./asset/contact.png')",
+        "pad-hero": "url('./asset/dynamic-2-img.svg')",
+        "create-hero": "url('./asset/dynamic-img.svg')",
+      },
+
       colors: {
+        hero: "#121212",
+        "font-color": "#B0B0B0",
+        "spi-blue": "#ade2ffc7",
+        "spi-pink": "#ffadd5c5",
+        "spi-purple": "#e16affb9",
+        "spi-pink-2": "#E32882",
+        "spi-blue-2": "#2C8BC0",
+        "spi-purple-2": "#BB0CE7",
+        "spi-pink-1": "#e32882a8",
+        "spi-blue-1": "#2c8cc0ab",
+        "spi-purple-1": "#bb0ce7a2",
+        "pink-3": "#EBC0DB",
+        "black-1": "#1B1B1B",
+        "black-2": "#0C0C0C",
+        "b-pink": "#ffadd59d",
+        "b-blue": "#ade2ff9a",
+        "b-purple": "#e16affb9",
+        white: "#fff",
         white: "#efe3facc",
         black: "#000",
         lightGray: "#D7D6DA",
@@ -46,7 +73,8 @@ module.exports = {
         deepPurple: "#332668",
         cardText: "#4F4F4F",
         modalBg: "rgba(0, 0, 0, 0.40)",
-        gradientColor: "linear-gradient(124deg, #6F133F -232.39%, #332668 243.87%)",
+        gradientColor:
+          "linear-gradient(124deg, #6F133F -232.39%, #332668 243.87%)",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -103,4 +131,4 @@ module.exports = {
     },
   },
   plugins: [require("tailwindcss-animate")],
-}
+};
