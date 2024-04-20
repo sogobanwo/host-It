@@ -21,44 +21,44 @@ const NavBar = ({ idPage }) => {
                         <div className="absolute inset-y-0 left-2 flex items-center pl-3">
                             <SearchNormal
                                 size="20"
-                                color="#FF8A65"
+                                className="text-primaryColor"
                             />
                         </div>
                     </div>
                     <div className="ml-6 rounded-full p-3 bg-lightBlack hover:bg-lightWhite">
-                        <Microphone2 size="20" color="#FF8A65" />
+                        <Microphone2 size="20" className="text-primaryColor" />
                     </div>
                 </div>
 
                 <div className="mr-10 flex items-center gap-6">
                     <div className="rounded-full p-3 bg-lightBlack hover:bg-lightWhite">
-                        <Video size="24" color="#FF8A65" />
+                        <Video size="24" className="text-primaryColor" />
                     </div>
                     <div className="rounded-full p-3 bg-lightBlack hover:bg-lightWhite">
-                        <NotificationBing size="24" color="#FF8A65" />
+                        <NotificationBing size="24" className="text-primaryColor" />
                     </div>
                     <div className="rounded-full">
-                        <ProfileCircle size="48" color="#FF8A65" />
+                        <ProfileCircle size="48" className="text-primaryColor" />
                     </div>
                 </div>
             </div>
             {!idPage && <div className="flex justify-between items-center px-8 py-4 w-screen mdl:hidden">
-                <TriangleLogo size="32" color="#FF8A65" />
+                <TriangleLogo size="48" className="text-primaryColor" />
                 <div className="flex justify-between items-center gap-2">
                     <div className="p-2 bg-lightBlack rounded-full">
-                        <SearchNormal size="20" color="#FF8A65" />
+                        <SearchNormal size="20" className="text-primaryColor" />
                     </div>
                     <div className="p-2 bg-lightBlack rounded-full">
-                        <NotificationBing size="32" color="#FF8A65" />
+                        <NotificationBing size="32" className="text-primaryColor" />
                     </div>
                     <div className="p-2 bg-lightBlack rounded-full">
-                        <ArrowCircleRight2 size="20" color="#FF8A65" />
+                        <ArrowCircleRight2 size="20" className="text-primaryColor"/>
                     </div>
                 </div>
             </div>}
             {idPage &&
                 <div className="absolute left-4 top-4 p-2 rounded-full bg-lightBlack mdl:hidden z-40" onClick={goBack}>
-                    <ArrowCircleDown size="32" color="#FF8A65" onClick={goBack} />
+                    <ArrowCircleDown size="32" className="text-primaryColor" onClick={goBack} />
                 </div>}
         </>
     );

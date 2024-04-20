@@ -54,6 +54,7 @@ module.exports = {
         "b-pink": "#ffadd59d",
         "b-blue": "#ade2ff9a",
         "b-purple": "#e16affb9",
+        primaryColor: "#ff7324",
         white: "#fff",
         white: "#efe3facc",
         black: "#000",

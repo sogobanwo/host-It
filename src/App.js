@@ -28,10 +28,10 @@ function App() {
         <Route path="/all-events/:id" element={<AllEventDetail />} />
         <Route path='/manage-events' element= {<ManageEvents />}/>
         <Route path='/manage-events/:id' element={<ManageEventDetails />}/>
-        <Route path='my-events' element={<AllMyEvents />} />
-        <Route path='my-events/:id' element={<AllEventDetail />} />
-        <Route path='my-collections' element={<MyCollection />} />
-        <Route path='my-tickets' element={<MyTickets />} />
+        <Route path='/my-events' element={<AllMyEvents />} />
+        <Route path='/my-events/:id' element={<AllEventDetail />} />
+        <Route path='/my-collections' element={<MyCollection />} />
+        <Route path='/my-tickets' element={<MyTickets />} />
       </Routes>
     </>
   );
