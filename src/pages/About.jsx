@@ -29,14 +29,14 @@ const About = () => {
             Events to creating events, we&apos;ve got you covered. The future of
             finance and innovation awaits!
           </p>
-          <div className="flex gap-8">
-            <div className="w-3/4 bg-hero p-5 flex flex-col gap-2 rounded-md text-center">
+          <div className="flex gap-4">
+            <div className="lg:w-3/4 md:w-3/4 1/2 bg-hero p-5 flex flex-col gap-2 rounded-md text-center">
               <p className="text-3xl font-semibold w-32 mx-auto bg-clip-text text-transparent bg-gradient-to-r  from-[#ffadd5c5] via-[#ade2ffc7] to-[#e16affb9]">
                 23,894
               </p>
               <p className="text-white">Total Events Created</p>
             </div>
-            <div className="w-3/4 bg-hero p-5 flex flex-col gap-2 rounded-md text-center">
+            <div className="lg:w-3/4 md:w-3/4 1/2 bg-hero p-5 flex flex-col gap-2 rounded-md text-center">
               <p className="text-3xl font-semibold w-32 mx-auto bg-clip-text text-transparent bg-gradient-to-r  from-[#ffadd5c5] via-[#ade2ffc7] to-[#e16affb9]">
                 10,894
               </p>
@@ -54,7 +54,7 @@ const About = () => {
             </button>
           </div>
         </div>
-        <div className="-mt-24">
+        <div className="-mt-24 lg:block md:block hidden">
           <img src={access} alt="access" height={750} />
         </div>
       </div>
