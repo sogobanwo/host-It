@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { extractTimestampInfo } from "../../../utils/helpers";
+import { extractTimestampInfo } from "../../utils/helpers";
 import { Clock, Heart, Location, TransmitSqaure2 } from "iconsax-react";
 import { Link } from "react-router-dom";
 import { EventAttendees } from "./EventAttendees";
@@ -11,7 +11,7 @@ const EventCard = ({ event }) => {
 
 
     return (
-        <div className={`min-w-[340px] w-full px-4 rounded-xl border-3 ${isHovered ? "transform scale-105" : ""}`}
+        <div className={`min-w-[340px] mb-4 w-full px-4 rounded-xl border-3 ${isHovered ? "transform scale-105" : ""}`}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}>
             <div className="relative h-52">
@@ -41,7 +41,7 @@ const EventCard = ({ event }) => {
                 <div className="mr-4 grow">
                     <div className="flex flex-col gap-1">
                         <div className="flex justify-between" >
-                            <Link to={`${id}`}>
+                            <Link href={`all-events/${id}`}>
                                 <p className="text-cardText text-base font-medium leading-tight line-clamp-1">
                                     {title}
                                 </p>

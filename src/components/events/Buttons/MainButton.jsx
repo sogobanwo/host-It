@@ -13,7 +13,7 @@ const MainButton = ({
           ...style,
         }}
       >
-        <div className="flex w-[140px] justify-center items-center text-white text-xs mdl:text-base font-medium leading-none">
+        <div className="flex w-[90px] pb-1 mdl:w-[140px] justify-center items-center text-white text-xs mdl:text-base font-medium leading-none">
           {title}
         </div>
       </div>
