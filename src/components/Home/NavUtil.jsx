@@ -11,7 +11,7 @@ export const NavUtil = [
   },
   {
     id: 3,
-    url: "/Contact",
+    url: "#Contact",
     text: "Contact",
   },
   {
