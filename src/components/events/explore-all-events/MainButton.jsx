@@ -8,7 +8,7 @@ const MainButton = ({
 }) => {
   return (
       <div
-        className={`flex  gap-2 px-2 py-2 rounded-2xl pointer-events-auto border border-lightWhite hover:bg-lightBlack ${active ? " bg-lightWhite" : "bg-transparent"} ${className}`}
+        className={`flex items-center justify-center gap-2 px-2 pt-2 rounded-2xl pointer-events-auto border border-lightWhite hover:bg-lightBlack ${active ? " bg-lightWhite" : "bg-transparent"} ${className}`}
         style={{
           ...style,
         }}

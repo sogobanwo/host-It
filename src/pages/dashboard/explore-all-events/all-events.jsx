@@ -1,6 +1,6 @@
 import EventLayout from '../../../components/events/Layout/Layout'
 import React from 'react'
-import { Calendar, FilterSearch, SearchNormal } from 'iconsax-react'
+import { FilterSearch, SearchNormal } from 'iconsax-react'
 import EventCard from '../../../components/events/explore-all-events/EventCard'
 import { events } from '../../../components/CONSTANT'
 import MainButton from '../../../components/events/explore-all-events/MainButton'
@@ -17,15 +17,15 @@ const AllEvents = () => {
             <input
               type="text"
               style={{ backgroundColor: "transparent" }}
-              className="flex-1 bg-transparent text-white rounded-full py-4 px-12 text-opacity-60 text-base font-normal leading-none"
+              className="flex items-center bg-transparent text-white rounded-full py-4 px-12 text-opacity-60 text-base font-normal leading-none font-mono"
               placeholder="Search for Events"
             />
             <div className="absolute inset-y-0 left-2 flex items-center pl-3 ">
-            <SearchNormal size="24" color="#FF8A65"/>
+            <SearchNormal size="24" className='text-white'/>
             </div>
           </div>
           <div className="ml-2 rounded-full p-3 bg-lightBlack hover:bg-lightWhite ">
-          <FilterSearch size="24" color="#FF8A65"/>
+          <FilterSearch size="24" className='text-white'/>
           </div>
         </div>
       </div>
@@ -40,13 +40,7 @@ const AllEvents = () => {
         <MainButton title={"Free"} link={"/"}  />
         <MainButton title={"Paid"} link={"/"}  />
         <MainButton title={"Private"} link={"/"}  />
-        <MainButton
-          title={
-            <Calendar size="24" color="#FF8A65"/>
-          }
-          link={"/"}
-          className="w-20"
-        />
+       
       </div>
 
       <div className="overflow-y-scroll mb-5 flex flex-col items-center justify-center mdl:flex-row  mdl:flex-wrap gap-3 mdl:ml-3">
