@@ -3,6 +3,7 @@ import { NavUtil } from "./NavUtil";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes, faBars } from "@fortawesome/free-solid-svg-icons";
+import ConnectButton from "../../hooks/useConnectionHook";
 
 const Navbar = () => {
   const [clicked, setClicked] = useState(false);
@@ -56,9 +57,7 @@ const Navbar = () => {
         })}
       </ul>
 
-      <button className=" flex gap-3 px-8 py-2 rounded-xl bg-gradient-to-r from-spi-pink-2 hover:from-spi-pink-1 via-spi-blue-2 hover:via-spi-blue-1 to-spi-purple-2 hover:to-spi-purple-1 text-neutral-100 font-semibold lg:block md:block hidden ">
-        Explore NFTix
-      </button>
+     <ConnectButton />
 
       <button
         className="lg:hidden md:hidden block text-neutral-100 cursor-pointer text-[30px] z-500"

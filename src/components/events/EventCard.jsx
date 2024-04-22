@@ -6,7 +6,6 @@ import { EventAttendees } from "./EventAttendees";
 
 const EventCard = ({ event, edit }) => {
     const baseUrl = process.env.REACT_APP_baseURL
-    console.log(baseUrl)
     const { timestamp, title, location, type, eventImage, id, attendees } = event;
     const { monthDay, monthName, time } = extractTimestampInfo(timestamp);
     const [isHovered, setIsHovered] = useState(false);

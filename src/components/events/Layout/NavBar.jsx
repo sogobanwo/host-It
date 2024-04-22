@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from 'react-router-dom';
-import { ArrowCircleDown,  Microphone2, ProfileCircle, SearchNormal, TriangleLogo } from "iconsax-react";
+import { ArrowCircleDown, Microphone2, ProfileCircle, SearchNormal, TriangleLogo } from "iconsax-react";
+import ConnectButton from "../../../hooks/useConnectionHook";
 
 const NavBar = ({ idPage }) => {
     const navigate = useNavigate();
@@ -31,15 +32,15 @@ const NavBar = ({ idPage }) => {
                 </div>
 
                 <div className="mr-10 flex items-center gap-6">
-                    <div className="rounded-full">
-                        <ProfileCircle size="48" className="text-white" />
-                    </div>
+                    <ConnectButton />
                 </div>
             </div>
             {!idPage && <div className="flex justify-between items-center px-8 py-4 w-screen mdl:hidden">
-                <TriangleLogo size="60" className="text-white" />
+                <TriangleLogo size="36" className="text-white mdl:hidden" />
+                <TriangleLogo size="60" className="text-white hidden mdl:flex" />
+
                 <div className="flex justify-between items-center gap-2">
-                <div className="rounded-full">
+                    <div className="rounded-full">
                         <ProfileCircle size="36" className="text-white" />
                     </div>
                 </div>
