@@ -4,7 +4,7 @@ import React from "react";
 const RegisterationCard = ({ setShowPopup, edit, price, type, ref, timestamp }) => {
     const { monthDay, monthName, time, year  } = extractTimestampInfo(timestamp);
   return (
-    <div className="bg-[#f5f5ff] flex flex-col justify-center items-center w-[85%] mdl:w-80 py-6 px-6 rounded-3xl -mt-12 mdl:mt-14">
+    <div className="bg-[#f5f5ff] flex flex-col justify-center items-center w-[85%] mdl:w-80 py-6 px-6 rounded-3xl mt-4 mdl:mt-14">
       <div className="mb-8">
         <p className="text-cardText mb-2 mdl:inline hidden">Date & Time</p>
         <h1 className="text-cardText text-xl">{`${time} | ${monthDay}, ${monthName} ${year}`}</h1>
@@ -18,7 +18,7 @@ const RegisterationCard = ({ setShowPopup, edit, price, type, ref, timestamp }) 
           }}
         >
           {edit ? (
-            <div className="flex gap-4">
+            <div className="flex gap-4 pt-1">
               <img
                 src={"/icons/edit.png"}
                 alt="Edit-Icon"
