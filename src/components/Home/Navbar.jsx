@@ -13,7 +13,7 @@ const Navbar = () => {
   }
 
   return (
-    <nav className="container mx-auto flex justify-between py-5">
+    <nav className="container mx-auto flex justify-between py-5 lg:px-20">
       {/* logo */}
       <a
         href="/"

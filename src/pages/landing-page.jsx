@@ -10,7 +10,7 @@ const LandingPage = () => {
   return (
     <div className="bg-hero">
       <Navbar />
-      <section className="mb-6">
+      <section className="lg:px-20 py-5">
         <HeroSection />
       </section>
       <section className="lg:px-20 py-5 bg-black">
