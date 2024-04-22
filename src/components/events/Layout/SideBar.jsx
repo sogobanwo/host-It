@@ -10,7 +10,7 @@ const SideBar = () => {
             {/* Navigation */}
             <div className="border-b border-solid border-lightWhite">
                 <div className="my-2 mx-6 flex items-center">
-                    <Link to="/home" className="flex items-center">
+                    <Link to="/" className="flex items-center">
                         <TriangleLogo size="48" className='text-white' />
                         <h3 className="text-white text-2xl font-normal whyte leading-loose ml-2.5">
                             Host-It

@@ -29,11 +29,12 @@ const RegisterationCard = ({ setShowPopup, edit, price, type, ref, timestamp }) 
             </div>
           ) : (
             (() => {
+              // eslint-disable-next-line
               switch (type) {
                 case "free":
                   return "Book Event (Free)";
                 case "paid":
-                  return `Book Event ($${price})`;
+                  return `Book Event (${price} ETH)`;
                 case "private":
                   return "Request to attend";
               }
@@ -82,7 +83,7 @@ const RegisterationCard = ({ setShowPopup, edit, price, type, ref, timestamp }) 
             src={"/icons/Copy.png"}
             width={20}
             height={20}
-            alt="Copy image"
+            alt="Copy"
             className="w-[32px] h-[32px] bg-black rounded-full p-1"
           />
         </div>
