@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from 'react-router-dom';
-import { ArrowCircleDown, Microphone2, ProfileCircle, SearchNormal, TriangleLogo } from "iconsax-react";
+import { ArrowCircleDown, Microphone2, SearchNormal, TriangleLogo } from "iconsax-react";
 import ConnectButton from "../../../hooks/useConnectionHook";
 
 const NavBar = ({ idPage }) => {
@@ -41,7 +41,7 @@ const NavBar = ({ idPage }) => {
 
                 <div className="flex justify-between items-center gap-2">
                     <div className="rounded-full">
-                        <ProfileCircle size="36" className="text-white" />
+                    <ConnectButton />
                     </div>
                 </div>
             </div>}
