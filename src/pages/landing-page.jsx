@@ -10,7 +10,7 @@ const LandingPage = () => {
   return (
     <div className="bg-hero">
       <Navbar />
-      <section className=" ">
+      <section className="mb-6">
         <HeroSection />
       </section>
       <section className="lg:px-20 py-5 bg-black">
@@ -20,7 +20,7 @@ const LandingPage = () => {
         <div className="container mx-auto">
           <h1 className="lg:text-5xl md:text-4xl text-2xl font-extralight leading-snug text-neutral-100">
             Sell your favorite events tickets effortlessly{" "}
-            <span className="bg-clip-text font-medium text-transparent bg-gradient-to-r  from-[#ffadd5c5] via-[#ade2ffc7] to-[#e16affb9]">
+            <span className="bg-clip-text font-medium text-transparent bg-gradient-to-r  from-[#ffadd5c5] via-[#ade2ffc7] to-[#e16affb9] font-sans">
               without stress and Ads{" "}
             </span>
             fees or multiple click confirmation pop-ups that hold you back

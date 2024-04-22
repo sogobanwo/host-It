@@ -5,7 +5,7 @@ const About = () => {
   return (
     <div className="flex flex-col gap-28">
       <div className="container mx-auto">
-        <h1 className="text-5xl font-semibold font-hanken w-80 py-5 bg-clip-text text-transparent bg-gradient-to-r  from-[#ffadd5c5] via-[#ade2ffc7] to-[#e16affb9]">
+        <h1 className="text-5xl font-semibold font-hanken w-80 py-5 bg-clip-text text-transparent bg-gradient-to-r  from-[#ffadd5c5] via-[#ade2ffc7] to-[#e16affb9] font-sans">
           About NFTix
         </h1>
         <p className="lg:text-xl text-white">
@@ -20,7 +20,7 @@ const About = () => {
         <div className="w-[550px] flex flex-col gap-8">
           <h1 className="text-5xl font-hanken leading-tight text-neutral-100">
             Your ticket to{" "}
-            <span className="bg-clip-text text-transparent bg-gradient-to-r  from-[#ffadd5c5] via-[#ade2ffc7] to-[#e16affb9]">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r  from-[#ffadd5c5] via-[#ade2ffc7] to-[#e16affb9] font-sans">
               events and parties
             </span>
           </h1>

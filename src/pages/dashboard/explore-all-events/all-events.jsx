@@ -1,9 +1,9 @@
 import EventLayout from '../../../components/events/Layout/Layout'
 import React from 'react'
 import { FilterSearch, SearchNormal } from 'iconsax-react'
-import EventCard from '../../../components/events/explore-all-events/EventCard'
+import EventCard from '../../../components/events/EventCard'
 import { events } from '../../../components/CONSTANT'
-import MainButton from '../../../components/events/explore-all-events/MainButton'
+import MainButton from '../../../components/events/Buttons/MainButton'
 
 const AllEvents = () => {
   return (
@@ -29,7 +29,7 @@ const AllEvents = () => {
           </div>
         </div>
       </div>
-      <div className="flex gap-3 mb-2 px-3 overflow-x-auto w-screen mdl:w-full">
+      <div className="flex gap-3 mb-2 px-3 overflow-x-scroll w-screen mdl:w-full ">
         <MainButton
           title={"All Events"}
           link={"/"}
@@ -43,10 +43,10 @@ const AllEvents = () => {
        
       </div>
 
-      <div className="overflow-y-scroll mb-5 flex flex-col items-center justify-center mdl:flex-row  mdl:flex-wrap gap-3 mdl:ml-3">
+      <div className="overflow-y-scroll mb-5 flex flex-col items-center justify-center mdl:flex-row  mdl:flex-wrap gap-3 mdl:ml-3 -ml-3">
         {events.map((event, index) => (
-          <div key={index} className="w-full mdl:w-[24%]">
-            <EventCard key={index} event={event} />
+          <div key={index} className="w-[80%] mdl:w-[420px]">
+            <EventCard key={index} event={event}  />
           </div>
         ))}
       </div>
