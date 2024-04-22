@@ -12,7 +12,7 @@ const Navbar = () => {
   }
 
   return (
-    <nav className="container mx-auto flex justify-between py-5">
+    <nav className="container mx-auto flex justify-between py-5 lg:px-20">
       {/* logo */}
       <a
         href="/"
@@ -57,7 +57,7 @@ const Navbar = () => {
       </ul>
 
       <button className=" flex gap-3 px-8 py-2 rounded-xl bg-gradient-to-r from-spi-pink-2 hover:from-spi-pink-1 via-spi-blue-2 hover:via-spi-blue-1 to-spi-purple-2 hover:to-spi-purple-1 text-neutral-100 font-semibold lg:block md:block hidden ">
-        Explore NFTix
+        Dashboard
       </button>
 
       <button
