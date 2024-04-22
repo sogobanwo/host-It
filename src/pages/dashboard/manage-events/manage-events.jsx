@@ -1,54 +1,74 @@
 import EventLayout from "../../../components/events/Layout/Layout";
 import React from "react";
-import CardBox from "../../../components/ui/card.jsx";
+import MainButton from "../../../components/events/Buttons/MainButton";
+import { events } from "../../../components/CONSTANT";
+import EventDetailsCard from "../../../components/events/EventDetailsCard";
 
 const ManageEvents = () => {
   return (
     <EventLayout>
-      <div className="px-10 pt-10">
-        <div className="flex justify-between item-center px-5">
-          <h1 className="text-2xl text-slate-50">Manage My Events</h1>
-          <button className="bg-white py-3 px-5 border rounded-full">
-            Host an event
-          </button>
-        </div>
+      <div className=" flex justify-between mx-3 my-3">
+        <h1 className="font-bold text-4xl text-[#fff]">Manage Events</h1>
       </div>
 
-      <div className="flex item-center px-10 mt-5">
-        <div>
-          <div className="flex gap-x-4">
-            <button className="bg-white py-2 px-10 border rounded-xl">
-              Hosting
-            </button>
-            <button className="bg-white py-2 px-8 border rounded-xl">
-              Completed
-            </button>
-            <button className="bg-white py-2 px-8 border rounded-xl">
-              Draft
-            </button>
+      <div className="ml-5 mt-5 mr-11 mb-4 mdl:mb-0 flex flex-col md:flex-row">
+        <div className="w-screen mdl:w-3/5 whitespace-no-wrap">
+          <div className="flex gap-3 mb-2 overflow-x-auto w-screen mdl:w-full">
+            <MainButton title={"Hosted Event"} link={"/"} active={true} className="w-[140px]" />
+            <MainButton title={"Attending"} link={"/"} className="w-[140px]" />
+            <MainButton title={"Wishlist"} link={"/"} className="w-[140px]" />
           </div>
-
-          {/* Details */}
-          <CardBox />
-          <CardBox />
-          <CardBox />
+          <div className="flex items-start">
+            <div className="overflow-y-scroll h-[80vh]">
+              {events.map((event, index) => (
+                <EventDetailsCard key={index} event={event} />
+              ))}
+            </div>
+          </div>
         </div>
-
-        <div className="w-1/2 p-5">
-          <div className="p-3 w-4/5 bg-spi-blue-2 mx-auto my-auto rounded-2xl">
-            <h1 className="pt-1 pl-3">My Event Analysis</h1>
-            <div className="p-3 flex gap-x-5">
+        <div className="hidden mdl:inline bg-deepPurple text-white border border-white ml-3 w-[370px] rounded-2xl p-6">
+          <h1 className="mb-3">My Event Analysis</h1>
+          <div className="flex justify-between">
+            <div>
               <div>
-                <p1 className="text-sm">Amt of ticket sold</p1>
-                <h1>$100</h1>
+                <small className="text-[10px]">No. of Events</small>
+                <h1 className="text-3xl">200</h1>
               </div>
               <div>
-                <p1 className="text-sm"> no of ticket sold</p1>
-                <h1>100</h1>
+                <small className="text-[10px]">Amt of ticket sold</small>
+                <h1 className="text-2xl">$1250</h1>
               </div>
               <div>
-                <p1 className="text-sm">no. of attendees</p1>
-                <h1>$100</h1>
+                <small className="text-[10px]">Amt of ticket bought</small>
+                <h1 className="text-2xl">$100</h1>
+              </div>
+            </div>
+            <div>
+              <div>
+                <small className="text-[10px]">No. of event hosted</small>
+                <h1 className="text-3xl">100</h1>
+              </div>
+              <div>
+                <small className="text-[10px]">No. of ticket sold</small>
+                <h1 className="text-2xl">1250</h1>
+              </div>
+              <div>
+                <small className="text-[10px]">Total no. of attendees</small>
+                <h1 className="text-2xl">12500</h1>
+              </div>
+            </div>
+            <div>
+              <div>
+                <small className="text-[10px]">No. of event attended</small>
+                <h1 className="text-3xl">100</h1>
+              </div>
+              <div>
+                <small className="text-[10px]">No. ticket bought</small>
+                <h1 className="text-2xl">100</h1>
+              </div>
+              <div>
+                <small className="text-[10px]">Ave. ticket Price</small>
+                <h1 className="text-2xl">100</h1>
               </div>
             </div>
           </div>
