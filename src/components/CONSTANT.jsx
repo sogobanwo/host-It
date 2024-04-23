@@ -21,19 +21,10 @@ export const eventMainSidebarData = [
     icon: <CalendarEdit className="w-8 h-8 text-white" />,
     url: "/manage-events",
   },
-  {
-    title: "My Events",
-    icon: <CalendarTick className="w-8 h-8 text-white" />,
-    url: "/my-events",
-  },
    {
-    title: "My collections",
-    icon: <EthereumClassic className="w-8 h-8 text-white" />,
-    url: "/my-collections",
-  }, {
-    title: "My tickets",
+    title: "Tickets & POA",
     icon: <Ticket className="w-8 h-8 text-white" />,
-    url: "/my-tickets",
+    url: "/tickets-poa",
   },
 ];
 
