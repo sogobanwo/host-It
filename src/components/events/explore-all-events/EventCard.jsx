@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { extractTimestampInfo } from "../../../utils/helpers";
 import { Clock, Heart, Location, TransmitSqaure2 } from "iconsax-react";
 import { Link } from "react-router-dom";
-import { EventAttendees } from "./EventAttendees";
+import { EventAttendees } from "../EventAttendees";
 
 const EventCard = ({ event }) => {
   const { timestamp, title, location, type, eventImage, id, attendees } = event;

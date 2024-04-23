@@ -1,102 +1,68 @@
-import Layout from "../../components/events/Layout/Layout";
-import React from "react";
+import { CalendarEvent } from "../../components/events/CalendarEvent";
+import EventLayout from "../../components/events/Layout/Layout";
+import React, {useState} from "react";
+import { Link } from "react-router-dom";
+import EventTabs from "../../components/events/EventTabs";
+import {Message, SearchNormal1, Home} from "iconsax-react"
+import { DashboardBanner } from "../../components/events/DashboardBanner";
+
 
 const Dashboard = () => {
+  const [tabIndex, setTabIndex] =useState(0);
+  const [showCalendar, setShowCalendar] =useState(false)
+
+
   return (
-    <Layout>
-      <div className='bg-gradient-to-r from-purple-500 to-pink-500 min-h-20"'>
-        <h1 className="text-white pt-20 pl-14 text-4xl font-bold">
-          WELCOME TO THE HOUSE OF EVENT
-        </h1>
-        <div className="flex gap-x-5 ml-14 mt-6 pb-6">
-          <button className="bg-white py-3 px-8 border rounded-full font-semibold">
-            Host an Event
-          </button>
-          <button className="bg-white py-3 px-3 border rounded-full font-semibold">
-            Find your next event
-          </button>
-        </div>
-      </div>
-
-      {/* Second part that consist of All event, hosting and Attending */}
-      <div className="flex gap-x-8 px-8 mt-8">
-        <div className="w-1/2">
-          <div className="flex gap-x-4">
-            <button className="bg-white py-2 px-10 border rounded-xl">
-              All event
-            </button>
-            <button className="bg-white py-2 px-8 border rounded-xl">
-              Hosting
-            </button>
-            <button className="bg-white py-2 px-8 border rounded-xl">
-              Attending
-            </button>
-          </div>
-
-          <div className="flex gap-5 mt-5 text-white">
-            <div>
-              <h1 className="text-white">
-                <span>Sep</span> <br /> 23
-              </h1>
-            </div>
-            <div>
-              <img
-                src="https://images.pexels.com/photos/2774556/pexels-photo-2774556.jpeg?auto=compress&cs=tinysrgb&w=600"
-                width="250px"
-                alt="event page"
-              />
-            </div>
-            <div>
-              <h1 className="font-bold">Bragtime official App Launching</h1>
-              <div>12:00pm</div>
-              <div>1 Kent street, Melbourne</div>
-            </div>
-          </div>
-
-          <div className="flex gap-5 mt-5 text-white">
-            <div>
-              <h1 className="text-white">
-                <span>Sep</span> <br /> 23
-              </h1>
-            </div>
-            <div>
-              <img
-                src="https://images.pexels.com/photos/2774556/pexels-photo-2774556.jpeg?auto=compress&cs=tinysrgb&w=600"
-                width="250px"
-                alt="event page"
-              />
-            </div>
-            <div>
-              <h1 className="font-bold">Bragtime official App Launching</h1>
-              <div>12:00pm</div>
-              <div>1 Kent street, Melbourne</div>
-            </div>
-          </div>
-
-          <div className="flex gap-5 mt-5 text-white">
-            <div>
-              <h1 className="text-white">
-                <span>Sep</span> <br /> 23
-              </h1>
-            </div>
-            <div>
-              <img
-                src="https://images.pexels.com/photos/2774556/pexels-photo-2774556.jpeg?auto=compress&cs=tinysrgb&w=600"
-                width="250px"
-                alt="event page"
-              />
-            </div>
-            <div>
-              <h1 className="font-bold">Bragtime official App Launching</h1>
-              <div>12:00pm</div>
-              <div>1 Kent street, Melbourne</div>
-            </div>
+    <EventLayout>
+      <DashboardBanner />
+      <div className="mdl:ml-5 mt-5 mr-11 mb-28 mdl:mb-0 flex flex-col-reverse md:flex-row"
+      >
+       <EventTabs pageTabs={["All event", "Hosting", "Attending"]} />
+        <div className={`${showCalendar? "block" : "hidden"} h-[400px] w-screen mdl:inline mdl:w-2/5`}>
+          <div className="p-6 bg-deepPurple mdl:rounded-2xl mdl:border mdl:border-white mdl:ml-2">
+          <CalendarEvent />
           </div>
         </div>
-        <div className="className=w-1/2"></div>
       </div>
-    </Layout>
-  );
+      <div className="mdl:hidden fixed w-screen  bottom-0 flex justify-evenly items-center h-28 px-[5%] border-t-[1px] border-[#fff] bg-deepBlue z-50">
+        <Link href={"/events"}>
+          <div className="p-3 bg-[#fff]/[.15]  rounded-full">
+            <Home size="20" color="#eee"/>
+          </div>
+        </Link>
+        <Link href={"/"}>
+          <div className="p-3 bg-[#fff]/[.15] rounded-full">
+          <SearchNormal1 size="20" color="#eee"/>
+          </div>
+        </Link>
+
+        <Link href={"/"}>
+          <div className="p-3 bg-[#fff] rounded-full mb-10">
+            <img
+              src={"/icons/plus-large.svg"}
+              alt={"add-Event"}
+              width={32}
+              height={32}
+            />
+          </div>
+        </Link>
+        <Link href={"/"}>
+          <div className="p-3 bg-[#fff]/[.15] rounded-full">
+          <Message size="20" color="#FF8A65"/>
+          </div>
+        </Link>
+        <Link href={"/"}>
+          <img
+            src={"/icons/monkey-NFT.png"}
+            alt={"home"}
+            width={40}
+            height={40}
+          />
+        </Link>
+      </div>
+
+      
+      </EventLayout>  );
 };
 
 export default Dashboard;
