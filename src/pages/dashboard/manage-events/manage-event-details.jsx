@@ -1,89 +1,141 @@
+import TagsButton from "../../../components/events/Buttons/TagsButton";
 import EventLayout from "../../../components/events/Layout/Layout";
-import React from "react";
+import React, { useRef, useState } from "react";
+import RegisterationCard from "../../../components/events/RegisterEvent";
+import EachEventBanner from "../../../components/events/EachEventBanner";
+import { useParams } from "react-router-dom";
+import { events } from "../../../components/CONSTANT";
 
 const ManageEventDetails = () => {
+  const [showPopup, setShowPopup] = useState(false);
+  const ref = useRef(null);
+  const param = useParams()
+  const eventId= param.id
+  const event = events.find((event) => event.id === eventId)
+  const { description, price, type} = event;
   return (
     <EventLayout>
-      <div className='flex items-center bg-gradient-to-r from-purple-500 to-pink-500 min-h-20"'>
-        <div className="text-white pt-20 pl-14 font-bold w-1/2">
-          <h1 className="text-5xl">
-            Bragtime official App <br />
-            Launching
-          </h1>
-          <p className="text-xs mt-3">Host by:</p>
-          <div>
-            <img className="inline" src="" alt="icon" />
-            <span className="ml-2 pb-3">AJ Moses</span>
-          </div>
-          <div className="pt-2 pb-4">
-            {/* icon and street name*/}
-            <h>1 Kent street Melbourne</h>
-          </div>
-        </div>
-        <div className="bg-slate-50 p-5 mx-auto my-auto h-56 w-72 mr-20 rounded-xl text-zinc-700">
-          <p1>Date and Time</p1>
-          <h1 className="text-lg text-zinc-700">Saturday, Sept 16, 2023</h1>
-          <button className="border mt-4 py-2 px-12 bg-slate-800 text-slate-50 font-medium rounded-full ">
-            Edit Event{" "}
-          </button>
-          <p className="mt-3 text-xs">share with friends</p>
-        </div>
+       <EachEventBanner
+       edit
+        event={event}
+        showPopup={showPopup}
+        setShowPopup={setShowPopup}
+        ref={ref}
+      />
+      <div className="w-screen flex justify-center items-center mdl:hidden">
+        <RegisterationCard
+          setShowPopup={setShowPopup}
+          event={event}
+          edit
+          price={price}
+          type={type}
+          ref={ref}
+        />
       </div>
-
-      {/* Description */}
-      <div className="flex gap-x-5 text-slate-50 p-10">
-        <div className="w-1/2">
-          <h1 className="font-semibold text-2xl">Description</h1>
-          <p className="py-2">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book. It has survived not
-            only five centuries, but also the leap into electronic typesetting,
-            remaining essentially unchanged. It was popularised in the 1960s
-            with the release of Letraset sheets containing Lorem Ipsum passages,
-            and more recently with desktop publishing software like Aldus
-            PageMaker including versions of Lorem Ipsum.
-          </p>
-          <h1 className="font-semibold text-2xl">Hours</h1>
-          <p className="py-2">
-            Saturday: <span className="ml-3">12:00pm - 3:00pm</span>
-          </p>
-          <h1 className="font-semibold text-2xl">Tags</h1>
-          <div className="flex mt-3 gap-x-4">
-            <button className="bg-white py-2 px-10 border rounded-xl">
-              Music
-            </button>
-            <button className="bg-white py-2 px-8 border rounded-xl">
-              Family
-            </button>
-            <button className="bg-white py-2 px-8 border rounded-xl">
-              Free
-            </button>
-          </div>
-          <h1 className="mt-3">Share with friends</h1>
-        </div>
-
-        <div className="w-1/2 p-5">
-          <div className="p-3 w-4/5 bg-spi-blue-2 mx-auto my-auto rounded-2xl">
-            <h1 className="pt-1 pl-3">My Event Analysis</h1>
-            <div className="p-3 flex gap-x-5">
-              <div>
-                <p1 className="text-sm">Amt of ticket sold</p1>
-                <h1>$100</h1>
+      <div className="flex mdl:flex-row flex-col my-8 text-white">
+        <div className="w-screen p-4 mdl:w-[58%] mdl:mx-[1%]">
+          <div>
+            <div className="mb-4">
+              <h1 className="text-xl  font-bold mb-2">Description</h1>
+              <p className=" text-base font-normal">{description}</p>
+            </div>
+            <div className="mb-4">
+              <h1 className="text-xl font-bold mb-2">Hours</h1>
+              <p className="text-xl font-normal mb-2">
+                Saturday: <span>12:00pm - 3:00pm</span>
+              </p>
+            </div>
+            <div className="mb-4">
+              <h1 className="text-xl text-[#fff] font-bold mb-2">Tags</h1>
+              <div className="text-[#fff] flex gap-4">
+                <TagsButton title={"Music"} />
+                <TagsButton title={"Family"} />
+                <TagsButton title={"Free"} />
               </div>
-              <div>
-                <p1 className="text-sm"> no of ticket sold</p1>
-                <h1>100</h1>
-              </div>
-              <div>
-                <p1 className="text-sm">no. of attendees</p1>
-                <h1>$100</h1>
+            </div>
+            <div className="mb-4">
+              <h1 className="text-xl font-bold mb-2">Share with Friends</h1>
+              <div className="flex gap-4">
+                <img
+                  src={"/icons/Facebook.svg"}
+                  width={32}
+                  height={32}
+                  alt="facebook"
+                />
+                <img
+                  src={"/icons/Instagram.svg"}
+                  width={32}
+                  height={32}
+                  alt="instagram"
+                />
+                <img
+                  src={"/icons/Twitter.svg"}
+                  width={32}
+                  height={32}
+                  alt="twitter"
+                />
+                <img
+                  src={"/icons/Copy.svg"}
+                  width={20}
+                  height={20}
+                  alt="twitter"
+                  className="w-[32px] h-[32px] bg-white rounded-full p-1"
+                />
               </div>
             </div>
           </div>
+          <div></div>
+        </div>
+        
+        <div className="w-screen p-4 mdl:w-auto msl:mx-[1%]">
+          <div className="bg-deepPurple text-white border border-white w-full rounded-2xl p-6">
+            <h1 className="mb-3">My Event Analysis</h1>
+            <div className="flex justify-between">
+              <div>
+                <div>
+                  <small className="text-[10px]">Amt of ticket sold</small>
+                  <h1 className="text-2xl">$100</h1>
+                </div>
+              </div>
+              <div>
+                <div>
+                  <small className="text-[10px]">No. of ticket sold</small>
+                  <h1 className="text-2xl">100</h1>
+                </div>
+              </div>
+              <div>
+                <div>
+                  <small className="text-[10px]">No. of attendees</small>
+                  <h1 className="text-2xl">100</h1>
+                </div>
+              </div>
+            </div>
+            <div className="flex justify-between my-5">
+              <p>Ticket Sales</p>
+              <p>Last 7 days</p>
+            </div>
+            <div className="border-b-[1px]">
+              <img
+                src={"/icons/chart-graphic.png"}
+                alt="chart"
+                width={"350"}
+                height={"250"}
+              />
+            </div>
+            <ul className="flex justify-between text-sm">
+              <li>S</li>
+              <li>M</li>
+              <li>T</li>
+              <li>W</li>
+              <li>T</li>
+              <li>F</li>
+              <li>S</li>
+            </ul>
+          </div>
         </div>
       </div>
+
+    
     </EventLayout>
   );
 };
