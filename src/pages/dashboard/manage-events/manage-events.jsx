@@ -26,7 +26,7 @@ const ManageEvents = () => {
             </div>
           </div>
         </div>
-        <div className="hidden mdl:inline bg-deepPurple text-white border border-white ml-3 w-[370px] rounded-2xl p-6">
+        <div className="hidden h-[300px] mdl:inline bg-deepPurple text-white border border-white ml-3 w-[370px] rounded-2xl p-6">
           <h1 className="mb-3">My Event Analysis</h1>
           <div className="flex justify-between">
             <div>

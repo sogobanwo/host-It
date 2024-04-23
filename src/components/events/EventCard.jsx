@@ -4,14 +4,14 @@ import { Clock, Heart, Location, TransmitSqaure2 } from "iconsax-react";
 import { Link } from "react-router-dom";
 import { EventAttendees } from "./EventAttendees";
 
-const EventCard = ({ event, edit }) => {
+const EventCard = ({ event }) => {
     const baseUrl = process.env.REACT_APP_baseURL
-    const { timestamp, title, location, type, eventImage, id, attendees } = event;
+    const { timestamp, title, location, type, eventImage, id, attendees, role } = event;
     const { monthDay, monthName, time } = extractTimestampInfo(timestamp);
     const [isHovered, setIsHovered] = useState(false);
 
     return (
-        <Link to={!edit? `${baseUrl}all-events/${id}`:`${baseUrl}manage-events/${id}`}>
+        <Link to={role === "Hosting"? `${baseUrl}manage-events/${id}`: `${baseUrl}all-events/${id}`}>
             <div className={`min-w-[340px] mb-4 w-full px-4 rounded-xl border-3 ${isHovered ? "transform scale-105" : ""}`}
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}>

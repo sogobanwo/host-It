@@ -8,7 +8,7 @@ import Request from "./EventModals/Request";
 
 const EachEventBanner = ({ event, edit, setShowPopup, showPopup, ref }) => {
   const { attendees, location, type, price, title, host, timestamp, eventImage } = event;
-  console.log(eventImage);
+  console.log(edit)
 
   return (
     <>
