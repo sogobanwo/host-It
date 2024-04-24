@@ -71,10 +71,13 @@ const EventCard = ({ event }) => {
                         </div>
                     </div>
                 </div>
+              </div>
             </div>
-        </div>
 
-    );
+           );
+ </div>
+
+
 };
 
 export default EventCard;
