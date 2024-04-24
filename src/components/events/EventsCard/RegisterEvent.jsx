@@ -1,4 +1,4 @@
-import { extractTimestampInfo } from "../../utils/helpers";
+import { extractTimestampInfo } from "../../../utils/helpers";
 import React from "react";
 
 const RegisterationCard = ({ setShowPopup, edit, price, type, timestamp }) => {

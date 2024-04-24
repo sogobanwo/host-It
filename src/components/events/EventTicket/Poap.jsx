@@ -3,7 +3,7 @@ import { events } from "../../CONSTANT";
 
 const Poap = () => {
   return (
-    <>
+    <div className="flex flex-row gap-6 flex-wrap w-full">
       {events.map((items) => {
         const { title } = items;
         return (
@@ -12,18 +12,17 @@ const Poap = () => {
             style={{
               clipPath:
                 "polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)",
-              background: "#9A8873",
+              background: "#666",
             }}
           >
             <div
-              className="h-[280px] w-[280px] flex items-center justify-center flex-col"
+              className="h-[280px] w-[280px] flex items-center justify-center flex-col bg-deepPurple"
               style={{
                 clipPath:
                   "polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)",
-                background: " #3A2618",
               }}
             >
-              <div className="flex items-center justify-center flex-col gap-2 text-[#fff]">
+              <div className="flex items-center justify-center flex-col text-center gap-2 text-[#fff]">
                 <div className="flex items-center justify-center gap-2">
                   <TriangleLogo size="48" className="text-[#fff]" />
                   <p className="font-bold">NFTix</p>
@@ -39,7 +38,7 @@ const Poap = () => {
           </div>
         );
       })}
-    </>
+    </div>
   );
 };
 

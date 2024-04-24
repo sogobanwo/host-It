@@ -1,4 +1,4 @@
-import SocialAsset from "../../Socials/SocialAsset";
+import SocialAsset from "./Socials/SocialAsset";
 
 export const Socials = [
   {

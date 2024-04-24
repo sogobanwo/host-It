@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Socials } from "../components/Home/Socials";
+import { Socials } from "./Socials";
 
 const Contact = () => {
   return (

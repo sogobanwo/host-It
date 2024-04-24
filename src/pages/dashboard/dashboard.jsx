@@ -1,14 +1,13 @@
-import { CalendarEvent } from "../../components/events/CalendarEvent";
+import { CalendarEvent } from "../../components/events/EventCalendar/CalendarEvent";
 import EventLayout from "../../components/events/Layout/Layout";
 import React, {useState} from "react";
 import { Link } from "react-router-dom";
-import EventTabs from "../../components/events/EventTabs";
+import EventTabs from "../../components/events/EventTabs/EventTabs";
 import {Message, SearchNormal1, Home} from "iconsax-react"
-import { DashboardBanner } from "../../components/events/DashboardBanner";
+import { DashboardBanner } from "../../components/events/EventBanner/DashboardBanner";
 
 
 const Dashboard = () => {
-  const [tabIndex, setTabIndex] =useState(0);
   const [showCalendar, setShowCalendar] =useState(false)
 
 

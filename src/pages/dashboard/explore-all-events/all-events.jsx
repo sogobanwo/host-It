@@ -1,7 +1,7 @@
 import EventLayout from '../../../components/events/Layout/Layout'
 import React from 'react'
 import { FilterSearch, SearchNormal } from 'iconsax-react'
-import EventCard from '../../../components/events/EventCard'
+import EventCard from '../../../components/events/EventsCard/EventCard'
 import { events } from '../../../components/CONSTANT'
 import MainButton from '../../../components/events/Buttons/MainButton'
 

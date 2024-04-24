@@ -26,9 +26,6 @@ const NavBar = ({ idPage }) => {
                             />
                         </div>
                     </div>
-                    <div className="ml-6 rounded-full p-3 bg-lightBlack hover:bg-lightWhite">
-                        <Microphone2 size="20" className="text-white" />
-                    </div>
                 </div>
 
                 <div className="mr-10 flex items-center gap-6">

@@ -4,19 +4,19 @@ import { extractTimestampInfo } from "../../../utils/helpers";
 import { events } from "../../CONSTANT";
 
 const Ticket = () => {
-  const timestamp = new Date().getTime();
-  const { monthDay, monthName, time } = extractTimestampInfo(timestamp);
   return (
-    <>
+    <div className="flex flex-row gap-6 flex-wrap w-full">
       {events.map((items) => {
-        const { location, host, price, id, type, description, attendees } =
+        const { location, host, price, id, type, description, attendees, timestamp} =
           items;
+          const { monthDay, monthName, time } = extractTimestampInfo(timestamp);
+
         return (
           <div
             key={id}
-            className="w-[400px] h-[250px] bg-[#ffff] rounded-md flex flex-col justify-between"
+            className="w-[400px] h-[250px] bg-[#ddd] rounded-xl flex flex-col justify-between"
           >
-            <div className="flex justify-between items-center bg-[#e03131] py-4 px-2 text-[#dee2e6] rounded-t-md">
+            <div className="flex justify-between items-center bg-deepPurple py-4 px-2 text-[#dee2e6] rounded-t-md">
               <p className="font-bold text-[#fff]">Event Ticket</p>
               <p className="italic">{type}</p>
             </div>
@@ -25,23 +25,23 @@ const Ticket = () => {
               <div className="flex justify-between items-center">
                 <div>
                   <div>
-                    <p className="text-[#adb5bd]">Name</p>
+                    <p className="text-[#666]">Name</p>
                     <p>{host}</p>
                   </div>
                 </div>
                 <div>
-                  <p className="text-[#adb5bd]">Date</p>
+                  <p className="text-[#666]">Date</p>
                   <p>
                     {monthDay}/{monthName}
                   </p>
                 </div>
                 <div>
-                  <p className="text-[#adb5bd]">Price</p>
-                  <p>$ {price}</p>
+                  <p className="text-[#666]">Price</p>
+                  <p>{price} ETH</p>
                 </div>
                 <div>
                   <div>
-                    <p className="text-[#adb5bd]">Time</p>
+                    <p className="text-[#666]">Time</p>
                     <p>{time}</p>
                   </div>
                 </div>
@@ -49,12 +49,12 @@ const Ticket = () => {
 
               <div className="flex justify-between items-center">
                 <div>
-                  <p className="text-[#adb5bd]">Location</p>
+                  <p className="text-[#666]">Location</p>
                   <p>{location}</p>
                 </div>
 
                 <div>
-                  <p className="text-[#adb5bd]">Seat No.</p>
+                  <p className="text-[#666]">Seat No.</p>
                   <p>{attendees.total}</p>
                 </div>
 
@@ -67,11 +67,11 @@ const Ticket = () => {
               </div>
             </div>
 
-            <div className="bg-[#e03131] pb-[1rem] rounded-b-md "></div>
+            <div className=" pb-[1rem] rounded-b-md "></div>
           </div>
         );
       })}
-    </>
+    </div>
   );
 };
 

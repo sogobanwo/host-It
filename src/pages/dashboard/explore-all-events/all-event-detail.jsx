@@ -3,9 +3,9 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import { events } from '../../../components/CONSTANT';
 import EventLayout from '../../../components/events/Layout/Layout';
-import EachEventBanner from '../../../components/events/EachEventBanner';
-import RegisterationCard from '../../../components/events/RegisterEvent';
-import EventCard from '../../../components/events/EventCard';
+import EachEventBanner from '../../../components/events/EventBanner/EachEventBanner';
+import RegisterationCard from '../../../components/events/EventsCard/RegisterEvent';
+import EventCard from '../../../components/events/EventsCard/EventCard';
 import TagsButton from '../../../components/events/Buttons/TagsButton';
 
 

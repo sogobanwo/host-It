@@ -1,10 +1,10 @@
 import React from "react";
 import Navbar from "../components/Home/Navbar";
 import { HeroSection } from "../components/Home/HeroSection";
-import About from "./About";
+import About from "../components/Home/About";
 import FAQs from "../components/Home/FAQs";
-import Contact from "./contact";
-import Footer from "../components/Footer";
+import Contact from "../components/Home/contact";
+import Footer from "../components/Home/Footer";
 
 const LandingPage = () => {
   return (

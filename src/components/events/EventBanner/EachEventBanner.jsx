@@ -1,10 +1,10 @@
 import React from "react";
-import { EventAttendees } from "./EventAttendees";
+import { EventAttendees } from "../EventsCard/EventAttendees";
 import { Location, ProfileCircle } from "iconsax-react";
-import RegisterationCard from "./RegisterEvent";
-import SuccessfulBooking from "./EventModals/Successful-booking";
-import Payment from "./EventModals/Payment";
-import Request from "./EventModals/Request";
+import RegisterationCard from "../EventsCard/RegisterEvent";
+import SuccessfulBooking from "../EventModals/Successful-booking";
+import Payment from "../EventModals/Payment";
+import Request from "../EventModals/Request";
 
 const EachEventBanner = ({ event, edit, setShowPopup, showPopup, ref }) => {
   const { attendees, location, type, price, title, host, timestamp, eventImage } = event;
