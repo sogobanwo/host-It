@@ -88,7 +88,7 @@ const ManageEventDetails = () => {
         </div>
         
         <div className="w-screen p-4 mdl:w-auto msl:mx-[1%]">
-          <div className="bg-deepPurple text-white border border-white w-full rounded-2xl p-6">
+          <div className="bg-deepBlue text-white border border-white w-full rounded-2xl p-6">
             <h1 className="mb-3">My Event Analysis</h1>
             <div className="flex justify-between">
               <div>

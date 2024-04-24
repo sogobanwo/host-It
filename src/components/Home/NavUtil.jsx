@@ -1,7 +1,7 @@
 export const NavUtil = [
   {
     id: 1,
-    url: "/Events",
+    url: "/events",
     text: "Events",
   },
   {

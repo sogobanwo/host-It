@@ -40,13 +40,13 @@ export const CalendarEvent = () => {
         // Change the skeletal lines color
         element
           .querySelector('.fc-daygrid-view')
-          .classList.add('calcolor');
+          .classList.add('text-white');
 
         // Change the day numbers color
         element
           .querySelectorAll('.fc-daygrid-day-number')
           .forEach(function (el) {
-            el.classList.add('calcolor');
+            el.classList.add('text-white');
           });
       }}
     />
