@@ -75,7 +75,6 @@ const EventCard = ({ event }) => {
             </div>
 
            );
- </div>
 
 
 };
