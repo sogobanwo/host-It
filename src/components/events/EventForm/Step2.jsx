@@ -1,8 +1,8 @@
 import React from "react";
 import { Input } from "../../ui/input";
 import { Button } from "../../ui/button";
-import Congratulations from "../EventModals/Congratulations";
-import Oops from "../EventModals/Oops";
+// import Congratulations from "../EventModals/Congratulations";
+// import Oops from "../EventModals/Oops";
 import { DatePickerWithRange } from "../DatePicker";
 
 const Form2 = ({ handleSubmit, handleBack, showPopup, setShowPopup, ref }) => {

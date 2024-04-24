@@ -8,7 +8,6 @@ import { DashboardBanner } from "../../components/events/DashboardBanner";
 
 
 const Dashboard = () => {
-  const [tabIndex, setTabIndex] =useState(0);
   const [showCalendar, setShowCalendar] =useState(false)
 
 

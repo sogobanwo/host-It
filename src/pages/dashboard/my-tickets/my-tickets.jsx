@@ -1,13 +1,11 @@
 import EventLayout from "../../../components/events/Layout/Layout";
-import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
 import React from "react";
-import Ticket from "../../../components/events/EventTicket/Ticket";
-import Poap from "../../../components/events/EventTicket/Poap";
+import EventTabsTP from "../../../components/events/EventTicketPOAPTab";
 
 const MyTickets = () => {
   return (
     <EventLayout>
-      <Tabs>
+      {/* <Tabs>
         <TabList style={{ color: "white" }}>
           <Tab>Ticket(s)</Tab>
           <Tab>POAP</Tab>
@@ -25,7 +23,11 @@ const MyTickets = () => {
             </div>
           </TabPanel>
         </TabPanels>
-      </Tabs>
+      </Tabs> */}
+      <div className="m-3">
+
+      <EventTabsTP pageTabs={["Tickets", "POAP"]}  />
+      </div>
     </EventLayout>
   );
 };
