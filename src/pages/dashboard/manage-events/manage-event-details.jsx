@@ -1,8 +1,8 @@
 import TagsButton from "../../../components/events/Buttons/TagsButton";
 import EventLayout from "../../../components/events/Layout/Layout";
 import React, { useRef, useState } from "react";
-import RegisterationCard from "../../../components/events/RegisterEvent";
-import EachEventBanner from "../../../components/events/EachEventBanner";
+import RegisterationCard from "../../../components/events/EventsCard/RegisterEvent";
+import EachEventBanner from "../../../components/events/EventBanner/EachEventBanner";
 import { useParams } from "react-router-dom";
 import { events } from "../../../components/CONSTANT";
 

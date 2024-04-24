@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { FooterUtils } from "./Utils";
+import { FooterUtils } from "../Utils";
 
 const Footer = () => {
   return (

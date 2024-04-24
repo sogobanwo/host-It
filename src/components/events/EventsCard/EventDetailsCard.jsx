@@ -1,4 +1,4 @@
-import { extractTimestampInfo } from '../../utils/helpers';
+import { extractTimestampInfo } from '../../../utils/helpers';
 import { Clock, Location, Menu } from 'iconsax-react';
 import React, { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom';

@@ -2,7 +2,7 @@ import EventLayout from "../../../components/events/Layout/Layout";
 import React from "react";
 import MainButton from "../../../components/events/Buttons/MainButton";
 import { events } from "../../../components/CONSTANT";
-import EventDetailsCard from "../../../components/events/EventDetailsCard";
+import EventDetailsCard from "../../../components/events/EventsCard/EventDetailsCard";
 
 const ManageEvents = () => {
   return (

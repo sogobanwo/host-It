@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import MainButton from "./Buttons/MainButton";
+import MainButton from "../Buttons/MainButton";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
-import { events } from "../CONSTANT";
-import EventDetailsCard from "./EventDetailsCard";
+import { events } from "../../CONSTANT";
+import EventDetailsCard from "../EventsCard/EventDetailsCard";
 
 const EventTabs = ({ pageTabs }) => {
   const [tabIndex, setTabIndex] = useState(0);

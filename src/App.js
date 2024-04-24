@@ -1,4 +1,3 @@
-import "./App.css";
 import { ChakraProvider } from "@chakra-ui/react";
 import { Routes, Route } from "react-router-dom";
 import LandingPage from "./pages/landing-page";

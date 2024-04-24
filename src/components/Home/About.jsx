@@ -1,5 +1,5 @@
 import React from "react";
-import access from "../asset/access.svg";
+import access from "../../asset/access.svg";
 
 const About = () => {
   return (

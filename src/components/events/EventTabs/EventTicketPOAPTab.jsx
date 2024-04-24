@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
-import MainButton from "./Buttons/MainButton";
-import Poap from "./EventTicket/Poap";
-import Ticket from "./EventTicket/Ticket";
+import MainButton from "../Buttons/MainButton";
+import Poap from "../EventTicket/Poap";
+import Ticket from "../EventTicket/Ticket";
 
 
 const EventTabsTP = ({ pageTabs }) => {

@@ -1,7 +1,7 @@
 import React from "react";
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
 import Navbar from "../components/Home/Navbar";
-import Footer from "../components/Footer";
+import Footer from "../components/Home/Footer";
 import { events } from "../components/CONSTANT";
 import EventCard from "../components/events/explore-all-events/EventCard";
 

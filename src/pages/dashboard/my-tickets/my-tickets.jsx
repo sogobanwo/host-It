@@ -1,6 +1,6 @@
 import EventLayout from "../../../components/events/Layout/Layout";
 import React from "react";
-import EventTabsTP from "../../../components/events/EventTicketPOAPTab";
+import EventTabsTP from "../../../components/events/EventTabs/EventTicketPOAPTab";
 
 const MyTickets = () => {
   return (

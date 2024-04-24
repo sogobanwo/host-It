@@ -1,6 +1,6 @@
 import React from "react";
-import GradientButton from "./Buttons/GradientButton";
-import NormalButton from "./Buttons/NormalButton";
+import GradientButton from "../Buttons/GradientButton";
+import NormalButton from "../Buttons/NormalButton";
 
 export const DashboardBanner = ({ showCalendar }) => {
   return (
