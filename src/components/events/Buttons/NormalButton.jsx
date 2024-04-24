@@ -12,13 +12,13 @@ const NormalButton = ({
   return (
     <Link to={link}>
       <div
-        className={`bg-[#fff] border border-deepPink px-8 py-4 rounded-full pointer-events-auto ${className} hover:bg-deepPink hover:border-[#fff]`}
+        className={`bg-[#fff] border border-deepPink px-8 py-4 rounded-full pointer-events-auto ${className} hover:bg-[#ddd]`}
         // style={{
         //   backgroundColor: "white",
         //   ...style,
         // }}
       >
-        <div className="text-deepPink hover:text-[#fff] text-base font-black leading-tight">
+        <div className="text-deepPink text-base font-black leading-tight">
           {title}
         </div>
       </div>

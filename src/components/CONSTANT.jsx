@@ -1,14 +1,11 @@
-import {
-  CalendarAdd,
-  CalendarEdit,
-  CalendarSearch,
-  CalendarTick,
-  EthereumClassic,
-  HomeHashtag,
-  Ticket,
-} from "iconsax-react";
+import { CalendarAdd, CalendarEdit, CalendarSearch, Home, HomeHashtag, Ticket } from "iconsax-react";
 
 export const eventMainSidebarData = [
+  {
+    title: "Home",
+    icon: <Home className="w-8 h-8 text-white" />,
+    url: "/",
+  },
   {
     title: "Dashboard",
     icon: <HomeHashtag className="w-8 h-8 text-white" />,

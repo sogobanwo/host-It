@@ -1,7 +1,7 @@
 import { extractTimestampInfo } from "../../utils/helpers";
 import React from "react";
 
-const RegisterationCard = ({ setShowPopup, edit, price, type, ref, timestamp }) => {
+const RegisterationCard = ({ setShowPopup, edit, price, type, timestamp }) => {
     const { monthDay, monthName, time, year  } = extractTimestampInfo(timestamp);
   return (
     <div className="bg-[#f5f5ff] flex flex-col justify-center items-center w-[85%] mdl:w-80 py-6 px-6 rounded-3xl mt-4 mdl:mt-14">
@@ -48,7 +48,8 @@ const RegisterationCard = ({ setShowPopup, edit, price, type, ref, timestamp }) 
         <img src={"/icons/Forward-alt.svg"} width={24} height={24} alt="forward"/>
         </div>
         </div>
-        
+        {
+          edit? "":
         <button
           className={`${
             edit ? "hidden" : ""
@@ -57,6 +58,7 @@ const RegisterationCard = ({ setShowPopup, edit, price, type, ref, timestamp }) 
           <img src={"/icons/plus-large.svg"} alt="" width={20} height={20} />{" "}
           Add to Whislist{" "}
         </button>
+        }
       </div>
       <div className="mdl:inline hidden">
         <p className="text-cardText mb-3">Share with friends</p>
