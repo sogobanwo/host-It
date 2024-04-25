@@ -7,6 +7,7 @@ import 'react-clock/dist/Clock.css';
 import 'react-date-picker/dist/DatePicker.css';
 import 'react-calendar/dist/Calendar.css';
 import DatePicker from 'react-date-picker';
+import axiosInstance from '../../../helpers/AxiosConfig';
 
 function PickTime({ onChange, value }) {
   return (
@@ -36,10 +37,17 @@ const CreateEvent = () => {
       <Formik
         initialValues={{ name: "", description: "", eventCategory: "", virtual_event: false, amount: "", start_date: new Date(), end_date: new Date(), expiry_date: new Date(), start_time: "00:00", end_time: "00:00", city: "", email: "", secret_code: "", image: "" }}
 
-        onSubmit={(values, { setSubmitting }) => {
-          console.log(JSON.stringify(values, null, 2));
-          setSubmitting(false);
-        }}
+        onSubmit={async(values, { setSubmitting }) => {
+          setSubmitting(true);
+          console.log(values)
+          try {
+            await axiosInstance.post('/events',
+            values);
+          } catch (error) {
+            console.log(error)
+            }
+          }
+        }
       >
         {({
           values,
