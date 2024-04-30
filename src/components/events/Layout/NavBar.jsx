@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from 'react-router-dom';
 import { ArrowCircleDown, Microphone2, SearchNormal, TriangleLogo } from "iconsax-react";
-import ConnectButton from "../../../hooks/useConnectionHook";
+import ConnectButton from "../../../Functions/useConnectionHook";
 
 const NavBar = ({ idPage }) => {
     const navigate = useNavigate();

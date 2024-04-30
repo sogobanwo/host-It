@@ -11,14 +11,14 @@ const ManageEvents = () => {
         <h1 className="font-bold text-4xl text-[#fff]">Manage Events</h1>
       </div>
 
-      <div className="ml-5 mt-5 mr-11 mb-4 mdl:mb-0 flex flex-col md:flex-row">
+      <div className="ml-5 mt-5 mr-11 mb-4 mdl:mb-0 flex flex-col mdl:flex-row">
         <div className="w-screen mdl:w-3/5 whitespace-no-wrap">
           <div className="flex gap-3 mb-2 overflow-x-auto w-screen mdl:w-full">
             <MainButton title={"Hosted Event"} link={"/"} active={true} className="w-[140px]" />
             <MainButton title={"Attending"} link={"/"} className="w-[140px]" />
             <MainButton title={"Wishlist"} link={"/"} className="w-[140px]" />
           </div>
-          <div className="flex items-start">
+          <div className="flex">
             <div className="overflow-y-scroll h-[80vh]">
               {events.map((event, index) => (
                 <EventDetailsCard key={index} event={event} />

@@ -14,9 +14,9 @@ const Ticket = () => {
         return (
           <div
             key={id}
-            className="w-[400px] h-[250px] bg-[#ddd] rounded-xl flex flex-col justify-between"
+            className="w-[90%] mdl:w-[400px] h-[250px] bg-[#ddd] rounded-xl flex flex-col justify-between"
           >
-            <div className="flex justify-between items-center bg-deepPurple py-4 px-2 text-[#dee2e6] rounded-t-md">
+            <div className="flex justify-between items-center bg-[#222222] py-4 px-2 text-[#dee2e6] rounded-t-md">
               <p className="font-bold text-[#fff]">Event Ticket</p>
               <p className="italic">{type}</p>
             </div>

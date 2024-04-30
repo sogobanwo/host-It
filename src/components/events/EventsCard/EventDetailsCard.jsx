@@ -24,8 +24,8 @@ const EventDetailsCard = ({ event, edit }) => {
     };
   }, [showPopup]);
   return (
-    <div className="relative flex mt-8 border-b border-solid border-lightWhite pb-6 pr-2">
-      <div className="flex justify-between w-full pr-4 pb-2">
+    <div className="flex m-4 p-4 border-b border-solid border-lightWhite">
+      <div className="flex justify-between w-full mb-8">
         <div className="flex justify-evenly">
           <div className="w-12">
             <p className="text-white text-sm mdl:text-base font-normal">
