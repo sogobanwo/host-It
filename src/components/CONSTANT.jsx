@@ -1,36 +1,36 @@
-import { CalendarAdd, CalendarEdit, CalendarSearch, Home, HomeHashtag, Ticket } from "iconsax-react";
+import { CalendarAdd, CalendarEdit, CalendarSearch, Home, HomeHashtag, ScanBarcode, Ticket } from "iconsax-react";
 
 export const eventMainSidebarData = [
   {
-    title: "Home",
-    icon: <Home className="w-8 h-8 text-white" />,
-    url: "/",
-  },
-  {
     title: "Dashboard",
-    icon: <HomeHashtag className="w-8 h-8 text-white" />,
+    icon: <HomeHashtag className="w-6 h-6 text-white" />,
     url: "/dashboard",
   },
   {
     title: "Explore",
-    icon: <CalendarSearch className="w-8 h-8 text-white" />,
+    icon: <CalendarSearch className="w-6 h-6 text-white" />,
     url: "/all-events",
   },
   {
     title: "Create event",
-    icon: <CalendarAdd className="w-8 h-8 text-white" />,
+    icon: <CalendarAdd className="w-6 h-6 text-white" />,
     url: "/create-event",
   },
   {
     title: "Manage event",
-    icon: <CalendarEdit className="w-8 h-8 text-white" />,
+    icon: <CalendarEdit className="w-6 h-6 text-white" />,
     url: "/manage-events",
+  },  
+  {
+    title: "Tickets & POAP",
+    icon: <Ticket className="w-6 h-6 text-white" />,
+    url: "/tickets-poap",
   },
   {
-    title: "Tickets & POA",
-    icon: <Ticket className="w-8 h-8 text-white" />,
-    url: "/tickets-poa",
-  },
+    title: "Mint POAP",
+    icon: <ScanBarcode color="#efe3facc" classNam="w-6 h-6"/>,
+    url: "/mint-poap",
+  }
 ];
 
 const image = "https://picsum.photos/200/300";

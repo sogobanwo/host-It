@@ -12,7 +12,7 @@ const AllEvents = () => {
         <h1 className="font-bold text-2xl mdl:text-4xl text-[#fff]">
           Find your next event
         </h1>
-        <div className="flex items-center">
+        <div className="hidden mdl:flex items-center">
           <div className="relative flex items-center bg-lightBlack mdl:ml-5 rounded-full w-66 mdl:w-80">
             <input
               type="text"
@@ -33,8 +33,7 @@ const AllEvents = () => {
         <MainButton
           title={"All Events"}
           link={"/"}
-          active={true}
-          
+          active={true}  
         />
         <MainButton title={"Today"} link={"/"}  />
         <MainButton title={"Free"} link={"/"}  />

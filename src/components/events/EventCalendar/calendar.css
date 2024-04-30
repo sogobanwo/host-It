@@ -1,3 +1,21 @@
-.calColor{
-    color: white !important
-}
+.fc-daygrid-day-number {
+    color: #fff; /* or any other white color code */
+  }
+  .fc-daygrid-view {
+    color: #fff; /* or any other white color code */
+  }
+  .fc-toolbar-title {
+    color: #fff; /* or any other white color code */
+  }
+  .fc-daygrid-day {
+    color: #fff; /* or any other white color code */
+  }
+  .fc-widget-content {
+    color: #fff; /* or any other white color code */
+  }
+  .fc-day-header {
+    color: #fff; /* or any other white color code */
+  }
+  .fc-col-header-cell-cushion{
+    color: #fff;
+  }

@@ -4,6 +4,7 @@ import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
 import { events } from '../../CONSTANT'
+import "./calendar.css"
 // import { INITIAL_EVENTS, createEventId } from './event-utils'
 
 export const CalendarEvent = () => {
@@ -36,19 +37,7 @@ export const CalendarEvent = () => {
       eventContent={renderEventContent} // custom render function
 
       events={calendarEvents}
-      customViewRender={function (view, element) {
-        // Change the skeletal lines color
-        element
-          .querySelector('.fc-daygrid-view')
-          .classList.add('text-white');
-
-        // Change the day numbers color
-        element
-          .querySelectorAll('.fc-daygrid-day-number')
-          .forEach(function (el) {
-            el.classList.add('text-white');
-          });
-      }}
+     
     />
   )
 
