@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import { EventAttendees } from "../EventsCard/EventAttendees";
 
 const EventCard = ({ event }) => {
-  const baseUrl = process.env.REACT_APP_baseURL
   const { timestamp, title, location, type, eventImage, id, attendees, role } = event;
   const { monthDay, monthName, time } = extractTimestampInfo(timestamp);
   const [isHovered, setIsHovered] = useState(false);
@@ -58,7 +57,7 @@ const EventCard = ({ event }) => {
         <div className="mr-4 grow">
           <div className="flex flex-col gap-1">
             <div className="flex justify-between">
-            <Link to={role === "Hosting" ? `${baseUrl}manage-events/${id}` : `${baseUrl}all-events/${id}`}>                <p className="text-cardText text-base font-medium leading-tight line-clamp-1">
+            <Link to={role === "Hosting" ? `/manage-events/${id}` : `/all-events/${id}`}>                <p className="text-cardText text-base font-medium leading-tight line-clamp-1">
                   {title}
                 </p>
               </Link>

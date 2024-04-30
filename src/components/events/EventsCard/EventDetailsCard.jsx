@@ -48,7 +48,7 @@ const EventDetailsCard = ({ event, edit }) => {
 
           <div className="mr-4 w-[50%]">
             <div className="flex flex-col">
-              <Link to={role === "Hosting" ? `${baseUrl}manage-events/${id}` : `${baseUrl}all-events/${id}`}>
+              <Link to={role === "Hosting" ? `/manage-events/${id}` : `/all-events/${id}`}>
 
                 <div className="flex justify-between">
                   <p className="text-white text-normal mdl:text-xl font-medium leading-tight line-clamp-1">
