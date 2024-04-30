@@ -63,7 +63,7 @@ const RegisterationCard = ({ setShowPopup, edit, price, type, timestamp }) => {
             </DialogTrigger> :
               <DialogTrigger
                 className={`${edit ? "hidden" : ""
-                  } gap-4 justify-center items-center w-64 h-14 bg-[f5f5ff] border border-deepPurple text-deepPurple rounded-full hover:bg-deepPurple hover:text-[#fff] mdl:flex hidden`}
+                  } gap-4 justify-center items-center w-64 h-14 bg-[f5f5ff] border border-deepPurple text-deepPurple rounded-full hover:bg-deepPurple hover:text-[#fff] mdl:flex`}
               >
                 <img src={"/icons/plus-large.svg"} alt="" width={20} height={20} />{" "}
                 Add to Whislist{" "}
