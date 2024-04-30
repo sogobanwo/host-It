@@ -114,9 +114,7 @@ const RegisterationCard = ({ setShowPopup, edit, price, type, timestamp }) => {
                 setSubmitting(true);
                 console.log(values)
                 const formData = new FormData();
-                Object.keys(values).forEach((key) => {
-                  formData.append(key, values[key]); // Append the image 
-                });
+                  formData.append("links", values["links"]); // Append Links
                 try {
                   // await axiosInstance.post('/events', formData);
                   console.log(formData)
@@ -138,8 +136,8 @@ const RegisterationCard = ({ setShowPopup, edit, price, type, timestamp }) => {
                     <Label htmlFor="email" className="text-[#222222]">POAP Links</Label>
                     <Field
                       as="textarea"
-                      className="w-full font-mono h-20 p-2"
-                      name="link"
+                      className="w-full font-mono h-20 p-2 border"
+                      name="links"
                       onChange={handleChange}
                       onBlur={handleBlur}
                       placeholder="Enter POAP links"
