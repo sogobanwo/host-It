@@ -10,7 +10,7 @@ const NavBar = ({ idPage }) => {
     };
     return (
         <>
-            <div className="hidden mt-3 mdl:flex justify-between sticky border-b border-lightWhite pb-1">
+            <div className="hidden mt-3 mdl:flex justify-between sticky border-b border-lightWhite pb-3">
                 <div className="flex items-center">
                     <div className="relative flex items-center bg-lightBlack ml-5 rounded-full w-80">
                         <input
