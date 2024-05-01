@@ -4,14 +4,18 @@ import { Field, Formik } from 'formik'
 import { Button } from '../../../components/ui/button';
 import { useRef } from 'react';
 import { CreateEventSchema } from '../../../helpers/formValidation';
+import axiosInstance from '../../../helpers/AxiosConfig';
+import { ethers } from 'ethers';
+import { useWeb3ModalProvider } from '@web3modal/ethers/react';
+import toast from 'react-hot-toast';
 
 
 const CreateEvent = () => {
   const fileRef = useRef(null);
   const [preview, setPreview] = useState(null);
+  const {walletProvider} = useWeb3ModalProvider()
 
   return (
-
     <EventLayout>
       <div className="flex flex-col mdl:flex-row justify-between mx-3 my-3">
         <h1 className="font-bold text-2xl mdl:text-4xl text-[#fff]">
@@ -39,11 +43,13 @@ const CreateEvent = () => {
             start_time: "00:00",
             end_time: "00:00",
             secret_code: "",
+            signature: ""
           }}
           validationSchema={CreateEventSchema}
         onSubmit={async (values, { setSubmitting }) => {
           setSubmitting(true);
-          console.log(values)
+          const toast1 = toast.loading('Creating Events')
+          // console.log(values)
           const formData = new FormData();
           Object.keys(values).forEach((key) => {
             if (key === 'image') {
@@ -52,9 +58,14 @@ const CreateEvent = () => {
               formData.append(key, values[key]); // Append other values
             }
           });
+          const provider = new ethers.BrowserProvider(walletProvider)
           try {
+            const signer = await provider.getSigner();
+            const signature = await signer.signMessage(JSON.stringify(values))
             // await axiosInstance.post('/events', formData);
-            console.log(formData)
+            toast.remove(toast1);
+            toast.success("Event Created")
+            // console.log(formData)
           } catch (error) {
             console.log(error)
           }

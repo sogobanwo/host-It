@@ -3,7 +3,8 @@ import { ChakraProvider } from "@chakra-ui/react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useWeb3ModalAccount } from "@web3modal/ethers/react";
 import { configureWeb3Modal } from "./connection";
-import MintPOAP from "./pages/dashboard/mint-poap/MintPOAP";
+import { Toaster } from "react-hot-toast";
+const  MintPOAP = lazy(()=> import("./pages/dashboard/mint-poap/MintPOAP"));
 const LandingPage = lazy(() => import("./pages/landing-page"));
 const CreateEvent = lazy(() => import("./pages/dashboard/create-events/create-event"));
 const AllEvents = lazy(() => import("./pages/dashboard/explore-all-events/all-events"));
@@ -37,6 +38,7 @@ function App() {
             <Route path="/tickets-poap" element={isConnected ?<MyTickets />: <Navigate to="/" />} />
             <Route path="/mint-poap" element={isConnected ?<MintPOAP />: <Navigate to="/" />} />
           </Routes>
+          <Toaster />
         </Suspense>
       </ChakraProvider>
     </>

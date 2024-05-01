@@ -1,11 +1,21 @@
 import EventLayout from '../../../components/events/Layout/Layout'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { FilterSearch, SearchNormal } from 'iconsax-react'
 import EventCard from '../../../components/events/EventsCard/EventCard'
-import { events } from '../../../components/CONSTANT'
 import MainButton from '../../../components/events/Buttons/MainButton'
+import { getAllEvents } from '../../../Functions/readFunctions'
 
 const AllEvents = () => {
+  const [events, setEvents] = useState([]);
+  const [filteredEvents, setFilteredEvents] = useState([]);
+  useEffect(() => {
+    const fetchEvents = async () => {
+      const allEvents = await getAllEvents();
+      setEvents(allEvents);
+      setFilteredEvents(allEvents);
+    };
+    fetchEvents();
+  }, []);
   return (
     <EventLayout>
         <div className="flex flex-col mdl:flex-row justify-between mx-3 my-3">
