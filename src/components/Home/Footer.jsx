@@ -33,7 +33,7 @@ const Footer = () => {
       <div className="lg:px-20 pb-20">
         <div className="container mx-auto flex justify-between">
           <h1 className="py-3 text-3xl tracking-widest font-light font-hanken text-neutral-200">
-            NFTix
+            HostIT
           </h1>
           <p className="flex gap-2 mt-4 text-neutral-100">
             <span>© 2023, All rights reserved</span>

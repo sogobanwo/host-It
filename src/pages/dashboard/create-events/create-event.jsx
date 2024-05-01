@@ -62,7 +62,7 @@ const CreateEvent = () => {
           try {
             const signer = await provider.getSigner();
             const signature = await signer.signMessage(JSON.stringify(values))
-            // await axiosInstance.post('/events', formData);
+            await axiosInstance.post('/events', formData);
             toast.remove(toast1);
             toast.success("Event Created")
             // console.log(formData)
