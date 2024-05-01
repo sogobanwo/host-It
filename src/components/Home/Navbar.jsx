@@ -13,13 +13,13 @@ const Navbar = () => {
   }
 
   return (
-    <nav className="container mx-auto flex justify-between py-5 lg:px-20">
+    <nav className="container mx-auto flex items-center justify-between py-5 lg:px-20">
       {/* logo */}
       <a
         href="/"
         className="py-3 text-2xl tracking-widest font-semibold font-hanken text-neutral-200"
       >
-        NFTix
+        HostIT
       </a>
       {/* navs */}
 
@@ -50,7 +50,7 @@ const Navbar = () => {
 
         {NavUtil.map((link, index) => {
           return (
-            <li key={index} className="hover:bg-hero rounded-3xl py-1 px-5">
+            <li key={index} className="hover:bg-hero pt-2 rounded-3xl px-5">
               <Link to={link.url}>{link.text}</Link>
             </li>
           );

@@ -8,15 +8,15 @@ import Footer from "../components/Home/Footer";
 
 const LandingPage = () => {
   return (
-    <div className="bg-hero">
+    <div className="layoutBg">
       <Navbar />
       <section className="lg:px-20 py-5">
         <HeroSection />
       </section>
-      <section className="lg:px-20 py-5 bg-black">
+      <section className="lg:px-20 py-5 layoutBg">
         <About />
       </section>
-      <section className="lg:px-20 py-10 bg-hero">
+      <section className="lg:px-20 py-10 layoutBg">
         <div className="container mx-auto">
           <h1 className="lg:text-5xl md:text-4xl text-2xl font-extralight leading-snug text-neutral-100">
             Sell your favorite events tickets effortlessly{" "}
@@ -27,10 +27,10 @@ const LandingPage = () => {
           </h1>
         </div>
       </section>
-      <section className="lg:px-20 py-10 bg-black-2">
+      <section className="lg:px-20 py-10 layoutBg">
         <FAQs />
       </section>
-      <section id="contact" className="lg:px-20 py-40 bg-contact-img bg-center">
+      <section id="contact" className="lg:px-20 py-40 bg-contact-img bg-center layoutBg">
         <Contact />
       </section>
       <Footer />

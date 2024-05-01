@@ -1,6 +1,22 @@
 import React from "react";
 
-export const EventAttendees = ({ attendees, darkText }) => {
+export const EventAttendees = ({ darkText }) => {
+  const image = "https://picsum.photos/200/300";
+
+  const attendees = {
+    data: [
+      {
+        image: `${image}?random=1`,
+      },
+      {
+        image: `${image}?random=5`,
+      },
+      {
+        image: `${image}?random=6`,
+      },
+    ],
+    total: 100,
+  }
   const displayedAttendees = attendees.data.slice(0, 3);
   const remainingAttendeesCount = Math.max(0, attendees.total - 3);
 

@@ -1,10 +1,21 @@
 import EventLayout from "../../../components/events/Layout/Layout";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import MainButton from "../../../components/events/Buttons/MainButton";
-import { events } from "../../../components/CONSTANT";
 import EventDetailsCard from "../../../components/events/EventsCard/EventDetailsCard";
+import { getAllEvents } from "../../../Functions/readFunctions";
 
 const ManageEvents = () => {
+  const [events, setEvents] = useState([]);
+  const [filteredEvents, setFilteredEvents] = useState([]);
+
+  useEffect(() => {
+    const fetchEvents = async () => {
+      const allEvents = await getAllEvents();
+      setEvents(allEvents);
+      setFilteredEvents(allEvents);
+    };
+    fetchEvents();
+  }, []);
   return (
     <EventLayout>
       <div className=" flex justify-between mx-3 my-3">
@@ -32,43 +43,43 @@ const ManageEvents = () => {
             <div>
               <div>
                 <small className="text-[10px]">No. of Events</small>
-                <h1 className="text-3xl">200</h1>
+                <h1 className="text-3xl">0</h1>
               </div>
               <div>
                 <small className="text-[10px]">Amt of ticket sold</small>
-                <h1 className="text-2xl">$1250</h1>
+                <h1 className="text-2xl">0</h1>
               </div>
               <div>
                 <small className="text-[10px]">Amt of ticket bought</small>
-                <h1 className="text-2xl">$100</h1>
+                <h1 className="text-2xl">0</h1>
               </div>
             </div>
             <div>
               <div>
                 <small className="text-[10px]">No. of event hosted</small>
-                <h1 className="text-3xl">100</h1>
+                <h1 className="text-3xl">0</h1>
               </div>
               <div>
                 <small className="text-[10px]">No. of ticket sold</small>
-                <h1 className="text-2xl">1250</h1>
+                <h1 className="text-2xl">0</h1>
               </div>
               <div>
                 <small className="text-[10px]">Total no. of attendees</small>
-                <h1 className="text-2xl">12500</h1>
+                <h1 className="text-2xl">0</h1>
               </div>
             </div>
             <div>
               <div>
                 <small className="text-[10px]">No. of event attended</small>
-                <h1 className="text-3xl">100</h1>
+                <h1 className="text-3xl">0</h1>
               </div>
               <div>
                 <small className="text-[10px]">No. ticket bought</small>
-                <h1 className="text-2xl">100</h1>
+                <h1 className="text-2xl">0</h1>
               </div>
               <div>
                 <small className="text-[10px]">Ave. ticket Price</small>
-                <h1 className="text-2xl">100</h1>
+                <h1 className="text-2xl">0</h1>
               </div>
             </div>
           </div>

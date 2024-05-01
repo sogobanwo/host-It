@@ -3,11 +3,15 @@ import { extractTimestampInfo } from "../../../utils/helpers";
 import { Clock, Heart, Location, TransmitSqaure2 } from "iconsax-react";
 import { Link } from "react-router-dom";
 import { EventAttendees } from "./EventAttendees";
+import { useWeb3ModalAccount } from "@web3modal/ethers/react";
 
 const EventCard = ({ event }) => {
-    const { timestamp, title, location, type, eventImage, id, attendees, role } = event;
+    const { organizer, eventName, eventId} = event;
+    const timestamp = Date.now()
     const { monthDay, monthName, time } = extractTimestampInfo(timestamp);
     const [isHovered, setIsHovered] = useState(false);
+    const {address} = useWeb3ModalAccount();
+
 
     return (
         <div className={`min-w-[340px] mb-4 w-full px-4 rounded-xl border-3 ${isHovered ? "transform scale-105" : ""}`}
@@ -16,14 +20,14 @@ const EventCard = ({ event }) => {
             <div className="relative h-52">
                 <div className="flex justify-between mx-4 items-center absolute top-2 right-0 left-0 z-10">
                     <p className="flex justify-center items-center bg-[#fff] text-[#5D35FF]  rounded-md absolute top-0 left-0 w-[80px] pt-1 mt-1.5">
-                        {type}
+                        free
                     </p>
                     <div className="flex gap-2 absolute top-0 right-0">
                         <TransmitSqaure2 size="40" className="text- border-lightWhite bg-[#fff] p-2 rounded-full" />
                         <Heart size="40" className="text- border-lightWhite bg-[#fff] p-2 rounded-full" />
                     </div>
                 </div>
-                <img src={eventImage} alt="" className="rounded-t-xl h-52 w-full" />
+                <img src={"/images/event-banner.png"} alt="" className="rounded-t-xl h-52 w-full" />
             </div>
 
             <div className="flex h-auto gap-4 border-b bg-[#fff] border-solid border-lightWhite py-2 rounded-b-xl">
@@ -39,18 +43,18 @@ const EventCard = ({ event }) => {
 
                 <div className="mr-4 grow">
                     <div className="flex flex-col gap-1">
-                        <Link to={role === "Hosting" ? `/manage-events/${id}` : `/all-events/${id}`}>
+                        <Link to={organizer === address ? `/manage-events/${eventId}` : `/all-events/${eventId}`}>
 
                             <div className="flex justify-between" >
 
                                 <p className="text-cardText text-base font-medium leading-tight line-clamp-1">
-                                    {title}
+                                    {eventName}
                                 </p>
                             </div>
                         </Link>
 
                         <div className="my-2 mdl:my-1">
-                            <EventAttendees attendees={attendees} />
+                            <EventAttendees />
                         </div>
 
                         <div className="flex flex-col gap-1">
@@ -64,7 +68,7 @@ const EventCard = ({ event }) => {
                             <div className="flex items-center">
                                 <Location size="20" className="text- border-lightWhite" />
                                 <div className="ml-2 text-cardText text-sm font-normal leading-none">
-                                    {location}
+                                    12, Ikorodu Road, Lagos
                                 </div>
                             </div>
                         </div>

@@ -8,7 +8,7 @@ const FAQs = () => {
     <div className="container mx-auto lg:text-xl flex flex-col gap-10">
       <h1 className="lg:text-5xl text-2xl text-neutral-100">
         Frequently Asked{" "}
-        <span className="font-semibold bg-clip-text text-transparent bg-gradient-to-r from-[#ffadd5c5] via-[#ade2ffc7] to-[#e16affb9]">
+        <span className="font-semibold font-mono bg-clip-text text-transparent bg-gradient-to-r from-[#ffadd5c5] via-[#ade2ffc7] to-[#e16affb9]">
           Questions
         </span>
       </h1>

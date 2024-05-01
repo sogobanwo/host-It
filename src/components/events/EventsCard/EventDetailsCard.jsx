@@ -4,14 +4,16 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom';
 import { EventAttendees } from './EventAttendees';
 import EventAction from './EventActions';
+import { useWeb3ModalAccount } from '@web3modal/ethers/react';
 
 const EventDetailsCard = ({ event, edit }) => {
-  const baseUrl = process.env.REACT_APP_baseURL
-  const { timestamp, title, location, attendees, id, eventImage, role } = event;
+  const { organizer, eventName, eventId} = event;
+  const timestamp = Date.now()
   const { monthDay, monthName, time } = extractTimestampInfo(timestamp);
   const [showPopup, setShowPopup] = useState(false);
   const ref = useRef(null);
 
+  const {address} = useWeb3ModalAccount();
   useEffect(() => {
     const checkIfClickedOutside = (e) => {
       if (showPopup && ref.current && !ref.current.contains(e.target)) {
@@ -41,24 +43,24 @@ const EventDetailsCard = ({ event, edit }) => {
               width={100}
               height={200}
               className={`min-w-[150px] min-h-[120px] mdl:min-w-[200px] mdl:min-h-[170px]`}
-              src={eventImage}
+              src={"/images/event-banner.png"}
               alt="Single Event"
             />
           </div>
 
           <div className="mr-4 w-[50%]">
             <div className="flex flex-col">
-              <Link to={role === "Hosting" ? `/manage-events/${id}` : `/all-events/${id}`}>
+              <Link to={organizer === address ? `/manage-events/${eventId}` : `/all-events/${eventId}`}>
 
                 <div className="flex justify-between">
                   <p className="text-white text-normal mdl:text-xl font-medium leading-tight line-clamp-1">
-                    {title}
+                    {eventName}
                   </p>
                 </div>
               </Link>
 
               <div className="my-2 mdl:my-4">
-                <EventAttendees attendees={attendees} />
+                <EventAttendees />
               </div>
 
               <div className="flex flex-col mdl:gap-2">
@@ -72,7 +74,7 @@ const EventDetailsCard = ({ event, edit }) => {
                 <div className="flex items-center">
                   <Location className='w-[16px] mdl:w-[32px]' color="#eee" />
                   <div className="ml-2 text-white text-xs mdl:text-sm font-normal leading-none">
-                    {location}
+                    12, Ikorodu road, Lagos.
                   </div>
                 </div>
               </div>

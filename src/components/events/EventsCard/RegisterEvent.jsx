@@ -4,8 +4,10 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, Di
 import { Label } from "../../ui/label";
 import { Field, Formik } from "formik";
 import { Button } from "../../ui/button";
+import axiosInstance from "../../../helpers/AxiosConfig";
+import toast from "react-hot-toast";
 
-const RegisterationCard = ({ setShowPopup, edit, price, type, timestamp }) => {
+const RegisterationCard = ({ setShowPopup, edit, price, type, timestamp, id }) => {
   const { monthDay, monthName, time, year } = extractTimestampInfo(timestamp);
 
   return (
@@ -23,7 +25,7 @@ const RegisterationCard = ({ setShowPopup, edit, price, type, timestamp }) => {
                 !edit && setShowPopup((oldState) => !oldState);
               }}
             >
-              {edit ? (
+              {!edit ? (
                 <div className="flex gap-4 pt-1">
                   <img
                     src={"/icons/edit.png"}
@@ -55,7 +57,7 @@ const RegisterationCard = ({ setShowPopup, edit, price, type, timestamp }) => {
             </div>
           </div>
           {
-            edit ? <DialogTrigger
+            !edit ? <DialogTrigger
               className={`gap-4 justify-center items-center w-64 h-14 bg-[f5f5ff] border border-deepPurple text-deepPurple rounded-full hover:bg-[#dddddd] mdl:flex hidden`}
             >
               <img src={"/icons/plus-large.svg"} alt="" width={20} height={20} />{" "}
@@ -106,51 +108,54 @@ const RegisterationCard = ({ setShowPopup, edit, price, type, timestamp }) => {
           <DialogTitle>Add POAP Links</DialogTitle>
           <DialogDescription>
             <Formik
-              initialValues={
-                {
-                  links: "",
-                }}
+              initialValues={{
+                links: "",
+                eventId: Number(id),
+              }}
               onSubmit={async (values, { setSubmitting }) => {
                 setSubmitting(true);
-                console.log(values)
+                const toast1 = toast.loading('Adding Links')
                 const formData = new FormData();
-                  formData.append("links", values["links"]); // Append Links
+                formData.append("links", values.links);
+                formData.append("id", values.id);
+                
                 try {
-                  // await axiosInstance.post('/events', formData);
-                  console.log(formData)
+                  await axiosInstance.post('/links/addlinks', formData);
+                  toast.remove(toast1)
+                  toast.success("Links Added")
+                  console.log(values)
+                  console.log(formData);
                 } catch (error) {
-                  console.log(error)
+                  console.log(error);
                 }
-              }
-              }
+              }}
             >
-              {({
-                values,
-                handleChange,
-                handleBlur,
-                handleSubmit,
-                isSubmitting,
-              }) => (
+              {({ values, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
                 <form className="space-y-4" onSubmit={handleSubmit}>
                   <div>
-                    <Label htmlFor="email" className="text-[#222222]">POAP Links</Label>
+                    <Label htmlFor="links" className="text-[#222222]">
+                      POAP Links
+                    </Label>
                     <Field
                       as="textarea"
-                      className="w-full font-mono h-20 p-2 border"
+                      className="w-full font-mono h-48 p-2 border"
                       name="links"
                       onChange={handleChange}
                       onBlur={handleBlur}
                       placeholder="Enter POAP links"
                       value={values.links}
                     />
-                    <Button type="submit" disabled={isSubmitting} className=" bg-[#222222] text-white w-full">
+                    <Button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="bg-[#222222] text-white w-full"
+                    >
                       {isSubmitting ? "Submitting Links" : "Submit"}
                     </Button>
                   </div>
                 </form>
               )}
             </Formik>
-
           </DialogDescription>
         </DialogHeader>
       </DialogContent>
