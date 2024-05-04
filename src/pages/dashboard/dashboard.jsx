@@ -3,14 +3,19 @@ import EventLayout from "../../components/events/Layout/Layout";
 import React, {useState} from "react";
 import EventTabs from "../../components/events/EventTabs/EventTabs";
 import AboutDashboard from "../../components/events/DashboardAbout/AboutDashboard";
+import { getAllEvents } from "../..//Functions/readFunctions";
 
 
 const Dashboard = () => {
   const [showCalendar, setShowCalendar] =useState(false)
+
+  const analytics =async ()=> {const sogo = await getAllEvents().length
+    return sogo.lenght
+  }
   
   return (
     <EventLayout>
-      <AboutDashboard eventAttended={0} eventHosted={0} poa={0} totalEvents={0}/>
+      <AboutDashboard eventAttended={2} eventHosted={2} poa={0} totalEvents={2}/>
       <div className="mdl:ml-5 mt-5 mr-11 mb-28 mdl:mb-0 flex flex-col-reverse md:flex-row gap-8 mdl:h-[600px]"
       >
        <EventTabs pageTabs={["All event", "Hosting", "Attending"]} />

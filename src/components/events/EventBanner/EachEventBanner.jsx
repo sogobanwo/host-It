@@ -11,10 +11,19 @@ import { Field, Formik } from "formik";
 import { Label } from "../../ui/label";
 import axiosInstance from "../../../helpers/AxiosConfig";
 import QRCode from "react-qr-code";
+import toast from "react-hot-toast";
+import { useWeb3ModalAccount, useWeb3ModalProvider } from "@web3modal/ethers/react";
+import { ethers } from "ethers";
+
 
 const EachEventBanner = ({ event, edit, setShowPopup, showPopup, ref }) => {
   const { attendees, location, type, price, title, host, timestamp, eventImage, id } = event;
   const [qrLink, setQrLink] = useState("")
+
+  const {address} = useWeb3ModalAccount()
+  const {walletProvider} = useWeb3ModalProvider()
+  const provider = new ethers.BrowserProvider(walletProvider)
+
 
   return (
     <>
@@ -38,12 +47,17 @@ const EachEventBanner = ({ event, edit, setShowPopup, showPopup, ref }) => {
                             }}
                             onSubmit={async (values, { setSubmitting }) => {
                               setSubmitting(true);
+                              const toast1 = toast.loading('Creating Ticket')
                               const formData = new FormData();
                               formData.append("quantity", values.quantity);
                               formData.append("eventId", values.eventId);
                               formData.append("ticketId", values.ticketId);
                               try {
+                                const signer = await provider.getSigner();
+                                const signature = await signer.signMessage(JSON.stringify(values))
                                 const response = await axiosInstance.post('/events/create-event-ticket', formData);
+                                toast.remove(toast1)
+                                toast.success("Tickets Created")
                                 console.log(response.data.data)
                                 console.log(values)
                                 console.log(formData);
@@ -120,6 +134,8 @@ const EachEventBanner = ({ event, edit, setShowPopup, showPopup, ref }) => {
                               formData.append("eventId", values.eventId);
                               formData.append("ticketId", values.ticketId);
                               try {
+                                const signer = await provider.getSigner();
+                                const signature = await signer.signMessage(JSON.stringify(values))
                                 const response = await axiosInstance.post('/events/cliam', formData);
                                 setQrLink(response.data.data)
                                 console.log(response.data.data)
@@ -191,6 +207,75 @@ const EachEventBanner = ({ event, edit, setShowPopup, showPopup, ref }) => {
                     </DialogContent>
                 }
 
+              </Dialog>
+              <Dialog>
+                <DialogTrigger className="p-3 bg-[#ffffff]/70 pt-4 text-black font-black w-[200px] h-[50px] hover:text-white">Buy Ticket
+                </DialogTrigger>
+                <DialogContent className="flex justify-center items-center">
+                      <DialogHeader>
+                        <DialogTitle>Choose your preferred ticket</DialogTitle>
+                        <DialogDescription>
+                          <Formik
+                            initialValues={{
+                              address: address,
+                              eventId: Number(id),
+                              ticketId: 1,
+                              amount: 0
+                            }}
+                            onSubmit={async (values, { setSubmitting }) => {
+                              setSubmitting(true);
+                              const toast1 = toast.loading('Buying Ticket')
+                              const formData = new FormData();
+                              formData.append("userAddr", values.address);
+                              formData.append("eventId", values.eventId);
+                              formData.append("ticketId", values.ticketId);
+                              try {
+                                const signer = await provider.getSigner();
+                                const signature = await signer.signMessage(JSON.stringify(values))
+                                const response = await axiosInstance.post('/events/buy-ticket', formData);
+                                toast.remove(toast1)
+                                toast.success("Ticket Bought Successfully")
+                                console.log(response.data.data)
+                                console.log(values)
+                                console.log(formData);
+                              } catch (error) {
+                                console.log(error);
+                              }
+                            }}
+                          >
+                            {({ values, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
+                              <form className="space-y-4" onSubmit={handleSubmit}>
+                                <div>
+                                  <Label htmlFor="links" className="text-[#222222]">
+                                    Ticket type
+                                  </Label>
+                                  <Field
+                                    as="select"
+                                    className="w-full font-mono mb-6 p-2 border"
+                                    name="ticketId"
+                                    onChange={handleChange}
+                                    onBlur={handleBlur}
+                                    placeholder="Enter user's address"
+                                    value={values.ticketId}
+                                  >
+                                    <option value={0}>Regular</option>
+                                    <option value={1}>VIP</option>
+                                    <option value={2}>VVIP</option>
+                                  </Field>
+                                  <Button
+                                    type="submit"
+                                    disabled={isSubmitting}
+                                    className="bg-[#222222] text-white w-full"
+                                  >
+                                    {isSubmitting ? "Buying Ticket" : "Buy Ticket"}
+                                  </Button>
+                                </div>
+                              </form>
+                            )}
+                          </Formik>
+                        </DialogDescription>
+                      </DialogHeader>
+                    </DialogContent>
               </Dialog>
             </div>
             <div className="">
