@@ -232,7 +232,7 @@ const EachEventBanner = ({ event, edit, setShowPopup, showPopup, ref }) => {
                               try {
                                 const signer = await provider.getSigner();
                                 const signature = await signer.signMessage(JSON.stringify(values))
-                                const response = await axiosInstance.post('/events/create-event-ticket', formData);
+                                const response = await axiosInstance.post('/events/buy-ticket', formData);
                                 toast.remove(toast1)
                                 toast.success("Ticket Bought Successfully")
                                 console.log(response.data.data)
