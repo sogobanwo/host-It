@@ -68,7 +68,7 @@ const CreateEvent = () => {
             const signer = await provider.getSigner();
             const signature = await signer.signMessage(JSON.stringify(values))
             console.log(values)
-            await axiosInstance.post('/events', formData);
+            // await axiosInstance.post('/events', formData);
             toast.remove(toast1);
             toast.success("Event Created")
             // console.log(formData)
@@ -253,7 +253,7 @@ const CreateEvent = () => {
                 onBlur={handleBlur}
                 className="text-white rounded-lg h-12 p-4 text-opacity-60 text-base font-normal leading-none font-mono bg-transparent border"
               />
-              {preview && <img src={preview} alt="Preview" className="w-[300px] h-[300px] mt-2" />}
+              {preview && <img src={preview} alt="Preview" className="w-[200px] h-[200px] mt-2" />}
               <div className='text-red'>
                 {errors.image && touched.image && errors.image}
               </div>
