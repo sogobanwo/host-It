@@ -27,7 +27,7 @@ function App() {
       <ChakraProvider>
         <Suspense fallback={<Preloader />}>
           <Routes>
-            <Route path="/" element={isConnected && data && data[3] === true? <Navigate to="/dashboard" /> : <Registration />} />
+            <Route path="/" element={isConnected && data && data[3] === true? <Navigate to="/dashboard" /> : <LandingPage />} />
             <Route path="/events" element= {isConnected && data && data[3] === true? <Navigate to="/dashboard" /> : <Events />} />
             <Route path="/dashboard" element={isConnected ? <Dashboard />: <Navigate to="/" /> } />
             <Route path="/create-event" element={isConnected ?<CreateEvent />: <Navigate to="/" />} />

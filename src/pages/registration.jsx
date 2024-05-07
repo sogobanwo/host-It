@@ -1,4 +1,5 @@
 import React, { useState } from 'react'; 
+import { useNavigate } from 'react-router-dom';
 // import { useWeb3ModalProvider } from "@web3modal/ethers/react";
 // import { getProvider } from '../constants/Providers';
 // import { getContract } from '../constants/contracts';
@@ -9,7 +10,7 @@ import React, { useState } from 'react';
 
 const Resigtration = () => {
 
-//   const navigate= useNavigate();
+    const navigate= useNavigate();
     // const  {walletProvider} = useWeb3ModalProvider();
     const [files, setFiles] = useState();
     const [ensName, setEnsName] = useState("");
