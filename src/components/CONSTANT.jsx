@@ -26,11 +26,6 @@ export const eventMainSidebarData = [
     icon: <Ticket className="w-6 h-6 text-white" />,
     url: "/tickets-poap",
   },
-  {
-    title: "Mint POAP",
-    icon: <ScanBarcode color="#efe3facc" classNam="w-6 h-6"/>,
-    url: "/mint-poap",
-  }
 ];
 
 const image = "https://picsum.photos/200/300";

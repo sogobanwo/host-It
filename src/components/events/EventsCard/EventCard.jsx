@@ -6,9 +6,27 @@ import { EventAttendees } from "./EventAttendees";
 import { useWeb3ModalAccount } from "@web3modal/ethers/react";
 
 const EventCard = ({ event }) => {
-    const { organizer, eventName, eventId} = event;
-    const timestamp = Date.now()
-    const { monthDay, monthName, time } = extractTimestampInfo(timestamp);
+    const { organizer, eventName, eventId, description, eventAddress, date, startTime, endTime, virtualEvent, privateEvent, totalTickets, soldTickets, isCancelled } = event;
+  const eventDate = new Date(date * 1000);
+  const eventYear = eventDate.getFullYear();
+  const eventMonth = eventDate.getMonth();
+  const monthName = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "April",
+    "May",
+    "June",
+    "July",
+    "Aug",
+    "Sept",
+    "Oct",
+    "Nov",
+    "Dec",
+  ][eventMonth];
+  const eventDay = eventDate.getDate();
+  const eventHour = eventDate.getHours();
+  const eventMinute = eventDate.getMinutes();
     const [isHovered, setIsHovered] = useState(false);
     const {address} = useWeb3ModalAccount();
 
@@ -37,7 +55,7 @@ const EventCard = ({ event }) => {
                         {monthName}
                     </p>
                     <div className="text-gradientColor text-2xl font-normal leading-3">
-                        {monthDay}
+                        {eventDay}
                     </div>
                 </div>
 
@@ -61,14 +79,14 @@ const EventCard = ({ event }) => {
                             <div className="flex items-center">
                                 <Clock size="20" className="text- border-lightWhite" />
                                 <div className="ml-2 text-cardText text-sm font-normal leading-none">
-                                    {time}
+                                    {`${eventHour}:${eventMinute}`}
                                 </div>
                             </div>
 
                             <div className="flex items-center">
                                 <Location size="20" className="text- border-lightWhite" />
                                 <div className="ml-2 text-cardText text-sm font-normal leading-none">
-                                    12, Ikorodu Road, Lagos
+                                    {eventAddress}
                                 </div>
                             </div>
                         </div>

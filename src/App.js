@@ -4,7 +4,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import { useWeb3ModalAccount } from "@web3modal/ethers/react";
 import { configureWeb3Modal } from "./connection";
 import { Toaster } from "react-hot-toast";
-const  MintPOAP = lazy(()=> import("./pages/dashboard/mint-poap/MintPOAP"));
+// const  MintPOAP = lazy(()=> import("./pages/dashboard/mint-poap/MintPOAP"));
 const LandingPage = lazy(() => import("./pages/landing-page"));
 const CreateEvent = lazy(() => import("./pages/dashboard/create-events/create-event"));
 const AllEvents = lazy(() => import("./pages/dashboard/explore-all-events/all-events"));
@@ -16,12 +16,9 @@ const Events = lazy(() => import("./pages/events"));
 const MyTickets = lazy(() => import("./pages/dashboard/my-tickets/my-tickets"));
 const Preloader = lazy(() => import("./components/PreLoader"));
 
-
 function App() {
   configureWeb3Modal();
   const { isConnected } = useWeb3ModalAccount();
-
-
   return (
     <>
       <ChakraProvider>
@@ -36,7 +33,7 @@ function App() {
             <Route path="/manage-events" element={isConnected ?<ManageEvents />: <Navigate to="/" />}/>
             <Route path="/manage-events/:id" element={isConnected ?<ManageEventDetails />: <Navigate to="/" />} />
             <Route path="/tickets-poap" element={isConnected ?<MyTickets />: <Navigate to="/" />} />
-            <Route path="/mint-poap" element={isConnected ?<MintPOAP />: <Navigate to="/" />} />
+            {/* <Route path="/mint-poap" element={isConnected ?<MintPOAP />: <Navigate to="/" />} /> */}
           </Routes>
           <Toaster />
         </Suspense>

@@ -7,13 +7,17 @@ import EventAction from './EventActions';
 import { useWeb3ModalAccount } from '@web3modal/ethers/react';
 
 const EventDetailsCard = ({ event, edit }) => {
-  const { organizer, eventName, eventId} = event;
-  const timestamp = Date.now()
-  const { monthDay, monthName, time } = extractTimestampInfo(timestamp);
+  const { organizer, eventName, eventId, description, eventAddress, date, startTime, endTime, virtualEvent, privateEvent, totalTickets, soldTickets, isCancelled } = event;
+  const eventDate = new Date(date * 1000);
+  const eventYear = eventDate.getFullYear();
+  const eventMonth = eventDate.getMonth() + 1;
+  const eventDay = eventDate.getDate();
+  const eventHour = eventDate.getHours();
+  const eventMinute = eventDate.getMinutes();
   const [showPopup, setShowPopup] = useState(false);
   const ref = useRef(null);
 
-  const {address} = useWeb3ModalAccount();
+  const { address } = useWeb3ModalAccount();
   useEffect(() => {
     const checkIfClickedOutside = (e) => {
       if (showPopup && ref.current && !ref.current.contains(e.target)) {
@@ -31,11 +35,11 @@ const EventDetailsCard = ({ event, edit }) => {
         <div className="flex justify-evenly">
           <div className="w-12">
             <p className="text-white text-sm mdl:text-base font-normal">
-              {monthName}
+              {eventMonth}
             </p>
             <div className="w-3 mdl:w-5 h-[1px] bg-amberYellow my-1"></div>
             <div className="text-white text-2xl mdl:text-4xl font-normal">
-              {monthDay}
+              {eventDay}
             </div>
           </div>
           <div className="w-[200px] h-[100px] mr-1 mdl:mr-4">
@@ -67,14 +71,14 @@ const EventDetailsCard = ({ event, edit }) => {
                 <div className="flex items-center">
                   <Clock className='w-[16px] mdl:w-[32px]' color="#eee" />
                   <div className="ml-2 text-white text-xs mdl:text-sm font-normal leading-none">
-                    {time}
+                    {`${eventHour} : ${eventMinute}`}
                   </div>
                 </div>
 
                 <div className="flex items-center">
                   <Location className='w-[16px] mdl:w-[32px]' color="#eee" />
                   <div className="ml-2 text-white text-xs mdl:text-sm font-normal leading-none">
-                    12, Ikorodu road, Lagos.
+                    {eventAddress}
                   </div>
                 </div>
               </div>

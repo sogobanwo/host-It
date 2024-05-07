@@ -31,5 +31,4 @@ export const CreateEventSchema = yup.object().shape({
         ),
     start_time: yup.date().required("Input event start time"),
     end_time: yup.date().required("Input event end time"),
-    secret_code: yup.string().min(6).max(6).required("Input secret code"),
 })
