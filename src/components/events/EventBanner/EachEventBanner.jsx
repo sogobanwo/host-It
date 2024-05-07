@@ -113,7 +113,7 @@ const EachEventBanner = ({ event, edit, setShowPopup, showPopup, ref }) => {
                       </DialogHeader>
                     </DialogContent>
               </Dialog>
-              <Dialog>
+              {/* <Dialog>
                 <DialogTrigger className="p-3 bg-[#ffffff]/70 text-black font-black pt-4 w-[200px] h-[50px] hover:text-white">Mint POAP</DialogTrigger>
                 {
                   qrLink === "" ?
@@ -207,8 +207,8 @@ const EachEventBanner = ({ event, edit, setShowPopup, showPopup, ref }) => {
                     </DialogContent>
                 }
 
-              </Dialog>
-              <Dialog>
+              </Dialog> */}
+              {/* <Dialog>
                 <DialogTrigger className="p-3 bg-[#ffffff]/70 pt-4 text-black font-black w-[200px] h-[50px] hover:text-white">Buy Ticket
                 </DialogTrigger>
                 <DialogContent className="flex justify-center items-center">
@@ -276,7 +276,7 @@ const EachEventBanner = ({ event, edit, setShowPopup, showPopup, ref }) => {
                         </DialogDescription>
                       </DialogHeader>
                     </DialogContent>
-              </Dialog>
+              </Dialog> */}
             </div>
             <div className="">
               <div className="flex gap-2 items-center mb-6">
