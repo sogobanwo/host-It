@@ -27,6 +27,7 @@ const Poap = () => {
                   <p className="text-lg"><span className="font-bold text-xl">Event name: </span> {name}</p>
                   <p className="text-lg"><span className="font-bold text-xl">Total Holders: </span>{supply}</p>
                   <p className="text-lg"><span className="font-bold text-xl">Claim Date: </span>{items.created.split(" ")[0]}</p>
+                  <p className="text-lg"><span className="font-bold text-xl">Token Id: </span>{items.tokenId}</p>
                 </div>
               </div>
             );

@@ -5,10 +5,20 @@ import EventTabs from "../../components/events/EventTabs/EventTabs";
 import AboutDashboard from "../../components/events/DashboardAbout/AboutDashboard";
 import useGetAllEvents from "../../Functions/useGetAllEvents";
 import { TbLoaderQuarter } from "react-icons/tb";
+import { useWeb3ModalAccount } from "@web3modal/ethers/react";
+import useGetAllPOAPs from "../../Functions/useGetAllPOAP";
 
 const Dashboard = () => {
   const [showCalendar, setShowCalendar] =useState(false)
   const allEvents = useGetAllEvents()
+  const {data} = useGetAllPOAPs()
+  const attended = data.length
+  const { address } = useWeb3ModalAccount();
+  const hosted=allEvents.data.filter((event) => event.organizer === address).length
+  const totalEvent = allEvents.data.length
+
+
+  
 
   return (
     <EventLayout>
@@ -20,7 +30,7 @@ const Dashboard = () => {
         </h2>
     </section>: 
     <>
-      <AboutDashboard eventAttended={2} eventHosted={2} poa={0} totalEvents={2}/>
+      <AboutDashboard eventAttended={attended} eventHosted={hosted} poa={attended} totalEvents={totalEvent}/>
       <div className="mdl:ml-5 mt-5 mr-11 mb-28 mdl:mb-0 flex flex-col-reverse md:flex-row gap-8 mdl:h-[600px]"
       >
        <EventTabs pageTabs={["Hosting", "Attending"]} data={allEvents.data}/>
@@ -34,6 +44,6 @@ const Dashboard = () => {
         }
       
       </EventLayout>  );
-};
+;}
 
 export default Dashboard;
