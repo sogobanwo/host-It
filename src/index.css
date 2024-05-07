@@ -108,7 +108,11 @@
 
 .dashboardCard{
   background:
-  radial-gradient(50% 150% at top left, #2c62917e, #030303, transparent), radial-gradient(50% 150% at bottom right, #9e428a7c, #030303, #030303)
+  radial-gradient(50% 150% at top left, #2c62917e, #030303, transparent), radial-gradient(50% 150% at bottom right, hsla(313, 41%, 44%, 0.486), #030303, #030303)
+}
+
+input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
 }
 
 .layoutBg{

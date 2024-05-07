@@ -8,12 +8,13 @@ import axiosInstance from '../../../helpers/AxiosConfig';
 import { ethers } from 'ethers';
 import { useWeb3ModalProvider } from '@web3modal/ethers/react';
 import toast from 'react-hot-toast';
+import {sha256} from 'crypto-hash';
 
 
 const CreateEvent = () => {
   const fileRef = useRef(null);
   const [preview, setPreview] = useState(null);
-  const {walletProvider} = useWeb3ModalProvider()
+  const { walletProvider } = useWeb3ModalProvider()
 
   return (
     <EventLayout>
@@ -45,11 +46,15 @@ const CreateEvent = () => {
             secret_code: "",
             signature: ""
           }}
-          validationSchema={CreateEventSchema}
+        validationSchema={CreateEventSchema}
         onSubmit={async (values, { setSubmitting }) => {
           setSubmitting(true);
           const toast1 = toast.loading('Creating Events')
           // console.log(values)
+          values.secret_code = (await sha256(values.description)).slice(0,6)
+          values.expiry_date = values.end_time.split("T")[0];
+          values.end_date = values.end_time.split("T")[0];
+          values.start_date = values.start_time.split("T")[0];
           const formData = new FormData();
           Object.keys(values).forEach((key) => {
             if (key === 'image') {
@@ -62,6 +67,7 @@ const CreateEvent = () => {
           try {
             const signer = await provider.getSigner();
             const signature = await signer.signMessage(JSON.stringify(values))
+            console.log(values)
             await axiosInstance.post('/events', formData);
             toast.remove(toast1);
             toast.success("Event Created")
@@ -87,16 +93,16 @@ const CreateEvent = () => {
 
               <div className='flex flex-col gap-2'>
                 <label className="text-white text-2xl font-normal whyte leading-loose ">
-                  Name
+                  Event name
                 </label>
                 <Field type="text" name="name"
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.name} placeholder={"input your name"} className=" text-white rounded-lg h-12 p-4 text-opacity-60 text-base font-normal leading-none font-mono bg-transparent border" />
-                  <div className='text-red'>
-                {errors.name && touched.name && errors.name}
+                <div className='text-red'>
+                  {errors.name && touched.name && errors.name}
                 </div>
-                
+
               </div>
 
               <div className='flex flex-col gap-2'>
@@ -108,22 +114,11 @@ const CreateEvent = () => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.email} placeholder={"input your mail"} className=" text-white rounded-lg h-12 p-4 text-opacity-60 text-base font-normal leading-none font-mono bg-transparent border" />
-                  <div className='text-red'>
-                {errors.email && touched.email && errors.email}
+                <div className='text-red'>
+                  {errors.email && touched.email && errors.email}
                 </div>
               </div>
 
-              {/* <div className='flex flex-col gap-2'>
-<label className="text-white text-2xl font-normal whyte leading-loose ">
-Ticket Price
-</label>
-<Field type="number"
-name="price"
-onChange={handleChange}
-onBlur={handleBlur}
-value={values.amount} placeholder={"input ticket price"} className=" text-white rounded-lg h-12 p-4 text-opacity-60 text-base font-normal leading-none font-mono bg-transparent border" />
-{errors.amount && touched.amount && errors.amount}
-</div> */}
               <div className='flex flex-col gap-2'>
                 <label className="text-white text-2xl font-normal whyte leading-loose ">
                   City
@@ -138,7 +133,7 @@ value={values.amount} placeholder={"input ticket price"} className=" text-white 
                   className=" text-white rounded-lg h-12 p-4 text-opacity-60 text-base font-normal leading-none font-mono bg-transparent border"
                 />
                 <div className='text-red'>
-                {errors.city && touched.city && errors.city}
+                  {errors.city && touched.city && errors.city}
                 </div>
               </div>
               <div className='flex flex-col gap-2'>
@@ -155,26 +150,10 @@ value={values.amount} placeholder={"input ticket price"} className=" text-white 
                   className=" text-white rounded-lg h-12 p-4 text-opacity-60 text-base font-normal leading-none font-mono bg-transparent border"
                 />
                 <div className='text-red'>
-                {errors.country && touched.country && errors.country}
+                  {errors.country && touched.country && errors.country}
                 </div>
               </div>
-              <div className='flex flex-col gap-2'>
-                <label className="text-white text-2xl font-normal whyte leading-loose ">
-                  Secret Code
-                </label>
-                <Field
-                  type="text"
-                  name="secret_code"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.secret_code}
-                  placeholder={"input secret code"}
-                  className=" text-white rounded-lg h-12 p-4 text-opacity-60 text-base font-normal leading-none font-mono bg-transparent border"
-                />
-                <div className='text-red'>
-                {errors.secret_code && touched.secret_code && errors.secret_code}
-                </div>
-              </div>
+            
               <div className='flex flex-col gap-2'>
                 <label className="text-white text-2xl font-normal whyte leading-loose ">
                   Category
@@ -188,7 +167,7 @@ value={values.amount} placeholder={"input ticket price"} className=" text-white 
                   <option value={true}>Private</option>
                 </Field>
                 <div className='text-red'>
-                {errors.eventCategory && touched.eventCategory && errors.eventCategory}
+                  {errors.eventCategory && touched.eventCategory && errors.eventCategory}
                 </div>
               </div>
               <div className='flex flex-col gap-2'>
@@ -203,63 +182,29 @@ value={values.amount} placeholder={"input ticket price"} className=" text-white 
                   <option value={true}>Virtual_event</option>
                 </Field>
                 <div className='text-red'>
-                {errors.virtual_event && touched.virtual_event && errors.virtual_event}
+                  {errors.virtual_event && touched.virtual_event && errors.virtual_event}
                 </div>
               </div>
               <div className='flex flex-col gap-2'>
                 <label className="text-white text-2xl font-normal whyte leading-loose ">
-                  Start Time
+                  Start Date & Time
                 </label>
                 <Field name="start_time" type="datetime-local" onChange={handleChange} onBlur={handleBlur}
-                  value={values.start_time} className=" text-white rounded-lg p-4 text-opacity-60 text-base font-normal leading-none font-mono bg-transparent border"
+                  value={values.start_time} className=" text-white rounded-lg p-4 text-opacity-60 text-base font-normal leading-none font-mono bg-transparent border custom-calendar-icon"
                 />
                 <div className='text-red'>
-                {errors.start_time && touched.start_time && errors.start_time}
+                  {errors.start_time && touched.start_time && errors.start_time}
                 </div>
               </div>
               <div className='flex flex-col gap-2'>
                 <label className="text-white text-2xl font-normal whyte leading-loose ">
-                  End Time
+                  End Date & Time
                 </label>
                 <Field name="end_time" type="datetime-local" onChange={handleChange} onBlur={handleBlur}
-                  value={values.end_time} className=" text-white rounded-lg p-4 text-opacity-60 text-base font-normal leading-none font-mono bg-transparent border"
+                  value={values.end_time} className=" text-white rounded-lg p-4 text-opacity-60 text-base font-normal leading-none font-mono bg-transparent border "
                 />
                 <div className='text-red'>
-                {errors.end_time && touched.end_time && errors.end_time}
-                </div>
-              </div>
-              <div className='flex flex-col gap-2'>
-                <label className="text-white text-2xl font-normal whyte leading-loose ">
-                  Start Date
-                </label>
-                <Field name="start_date" type="date" onChange={handleChange} onBlur={handleBlur}
-                  value={values.start_date} className=" text-white rounded-lg p-4 text-opacity-60 text-base font-normal leading-none font-mono bg-transparent border"
-                />
-                <div className='text-red'>
-                {errors.start_date && touched.start_date && errors.start_date}
-                </div>
-              </div>
-              <div className='flex flex-col gap-2'>
-                <label className="text-white text-2xl font-normal whyte leading-loose ">
-                  End Date
-                </label>
-                <Field name="end_date" type="date" onChange={handleChange} onBlur={handleBlur}
-                  value={values.end_date} className=" text-white rounded-lg p-4 text-opacity-60 text-base font-normal leading-none font-mono bg-transparent border"
-                />
-                <div className='text-red'>
-                {errors.end_date && touched.end_date && errors.end_date}
-                </div>
-              </div>
-              <div className='flex flex-col gap-2'>
-
-                <label className="text-white text-2xl font-normal whyte leading-loose ">
-                  Claim Expiry Date
-                </label>
-                <Field name="expiry_date" type="date" onChange={handleChange} onBlur={handleBlur}
-                  value={values.expiry_date} className=" text-white rounded-lg p-4 text-opacity-60 text-base font-normal leading-none font-mono bg-transparent border"
-                />
-                <div className='text-red'>
-                {errors.expiry_date && touched.expiry_date && errors.expiry_date}
+                  {errors.end_time && touched.end_time && errors.end_time}
                 </div>
               </div>
             </div>
@@ -278,7 +223,7 @@ value={values.amount} placeholder={"input ticket price"} className=" text-white 
               />
               <div className='text-red'>
                 {errors.description && touched.description && errors.description}
-                </div>
+              </div>
             </div>
             <div className='flex flex-col gap-2 mx-4'>
               <label className="text-white text-2xl font-normal whyte leading-loose ">
@@ -308,12 +253,11 @@ value={values.amount} placeholder={"input ticket price"} className=" text-white 
                 onBlur={handleBlur}
                 className="text-white rounded-lg h-12 p-4 text-opacity-60 text-base font-normal leading-none font-mono bg-transparent border"
               />
-              {preview && <img src={preview} alt="Preview" className="max-w-full h-auto mt-2" />}
+              {preview && <img src={preview} alt="Preview" className="w-[300px] h-[300px] mt-2" />}
               <div className='text-red'>
                 {errors.image && touched.image && errors.image}
-                </div>
+              </div>
             </div>
-
 
             <Button type="submit" disabled={isSubmitting} className="m-4 lg:w-2/5 rounded-xl bg-white text-black">
               {isSubmitting ? "Creating Event..." : "Create Event"}
