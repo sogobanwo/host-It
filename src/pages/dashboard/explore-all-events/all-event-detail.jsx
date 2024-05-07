@@ -2,9 +2,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import EventLayout from '../../../components/events/Layout/Layout';
-import EachEventBanner from '../../../components/events/EventBanner/EachEventBanner';
-import RegisterationCard from '../../../components/events/EventsCard/RegisterEvent';
-import EventCard from '../../../components/events/EventsCard/EventCard';
 import TagsButton from '../../../components/events/Buttons/TagsButton';
 import useGetAllEvents from '../../../Functions/useGetAllEvents';
 
@@ -139,7 +136,7 @@ const AllEventDetail = () => {
           </h1>
         </div>
       </div>
-      <div className="mb-4">
+      {/* <div className="mb-4">
         <h1 className="font-extrabold text-2xl mb-4 mx-[2%] text-white">
           Similar Events
         </h1>
@@ -150,7 +147,7 @@ const AllEventDetail = () => {
             ))}
           </div>
         </div>
-      </div>
+      </div> */}
     </EventLayout>
 
   )
