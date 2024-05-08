@@ -1,8 +1,9 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import useENSRegistration from '../Functions/useRegisterENS';
 import { useWeb3ModalAccount } from '@web3modal/ethers/react';
 import { useNavigate } from 'react-router-dom';
+import useGetENSByAddress from '../Functions/useGetEnsByAddress';
 
 
 
@@ -13,6 +14,8 @@ const Resigtration = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [imageUri, setImageUri] = useState("");
   const { address } = useWeb3ModalAccount()
+  const {loading, data} = useGetENSByAddress()
+
 
   const register = useENSRegistration();
   const uploadImageToIPFS = async () => {
@@ -37,8 +40,6 @@ const Resigtration = () => {
     } catch (error) {
     }
   };
-
-
 
   const handleSubmit = async (e) => {
     e.preventDefault();
