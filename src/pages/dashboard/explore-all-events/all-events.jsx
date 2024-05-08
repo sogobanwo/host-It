@@ -5,16 +5,15 @@ import EventCard from '../../../components/events/EventsCard/EventCard'
 import MainButton from '../../../components/events/Buttons/MainButton'
 import useGetAllEvents from '../../../Functions/useGetAllEvents'
 import { TbLoaderQuarter } from 'react-icons/tb'
-import { Item } from '@radix-ui/react-dropdown-menu'
 
 const AllEvents = () => {
       const allEvents = useGetAllEvents();
 
       const [activeTab, setActiveTab] = useState(0);
 
-      const cancelledEvent = allEvents.data.filter(Item => Item.isCancelled == true);
+      const cancelledEvent = allEvents.data.filter(Item => Item.isCancelled === true);
 
-      const ongoingEvent = allEvents.data.filter(Item => Item.isCancelled != true);
+      const ongoingEvent = allEvents.data.filter(Item => Item.isCancelled !==true);
 
       console.log(allEvents)
  
@@ -64,20 +63,20 @@ const AllEvents = () => {
             </div>
 
             <div className="overflow-y-scroll mb-5 flex flex-col items-center justify-center mdl:flex-row  mdl:flex-wrap gap-3 mdl:ml-3 -ml-3">
-              {activeTab == 0 && allEvents.data.map((event, index) => (
+              {activeTab === 0 && allEvents.data.map((event, index) => (
                 <div key={index} className="w-[80%] mdl:w-[420px]">
                   <EventCard key={index} event={event} />
                 </div>
               ))}
 
 
-            {activeTab == 2 && ongoingEvent.map((event, index) => (
+            {activeTab === 2 && ongoingEvent.map((event, index) => (
                 <div key={index} className="w-[80%] mdl:w-[420px]">
                   <EventCard key={index} event={event} />
                 </div>
               ))}
 
-            {activeTab == 3 && cancelledEvent.map((event, index) => (
+            {activeTab === 3 && cancelledEvent.map((event, index) => (
                 <div key={index} className="w-[80%] mdl:w-[420px]">
                   <EventCard key={index} event={event} />
                 </div>
