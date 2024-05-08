@@ -7,54 +7,17 @@ import { useParams } from "react-router-dom";
 import { events } from "../../../components/CONSTANT";
 
 const ManageEventDetails = () => {
-  const events = useGetAllEvents();
-  console.log(events)
-  if (!events.loading) {
-    event = events.data.find((event) => event.eventId === Number(eventid));
-    if (event) {
-      ({  startTime, endTime, description, eventAddress} = event);
-    }
-  }
-  const startDate = new Date(startTime * 1000);
-  const eventStartYear = startDate.getFullYear();
-  const eventStartMonth = startDate.getMonth();
-  const eventStartMonthName = ["Jan", "Feb", "Mar", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec",
-  ][eventStartMonth];
-  const eventStartDay = startDate.getDate();
-  const eventStartHour = startDate.getHours();
-  const eventStartMinute = startDate.getMinutes();
-
-  const endDate = new Date(endTime * 1000);
-  const eventEndYear = endDate.getFullYear();
-  const eventEndMonth = endDate.getMonth();
-  const eventEndMonthName = ["Jan", "Feb", "Mar", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec",
-  ][eventEndMonth];
-  const eventEndDay = endDate.getDate();
-  const eventEndHour = endDate.getHours();
-  const eventEndMinute = endDate.getMinutes();
-
-  useEffect(() => {
-    const checkIfClickedOutside = (e) => {
-      if (showPopup && ref.current && !ref.current.contains(e.target)) {
-        setShowPopup(false);
-      }
-    };
-    document.addEventListener("mousedown", checkIfClickedOutside);
-    return () => {
-      document.removeEventListener("mousedown", checkIfClickedOutside);
-    };
-  }, [showPopup]);
   const [showPopup, setShowPopup] = useState(false);
   const ref = useRef(null);
   const param = useParams()
   const eventId= param.id
-  const eventss = events.find((event) => event.id === eventId)
-  const { description, price, type} = eventss;
+  const event = events.find((event) => event.id === eventId)
+  const { description, price, type} = event;
   return (
     <EventLayout>
        <EachEventBanner
        edit
-        event={eventss}
+        event={event}
         showPopup={showPopup}
         setShowPopup={setShowPopup}
         ref={ref}
@@ -62,7 +25,7 @@ const ManageEventDetails = () => {
       <div className="w-screen flex justify-center items-center mdl:hidden">
         <RegisterationCard
           setShowPopup={setShowPopup}
-          event={eventss}
+          event={event}
           edit
           price={price}
           type={type}
@@ -77,9 +40,9 @@ const ManageEventDetails = () => {
               <p className=" text-base font-normal">{description}</p>
             </div>
             <div className="mb-4">
-              <h1 className="text-xl font-bold mb-2">Date & Time</h1>
+              <h1 className="text-xl font-bold mb-2">Hours</h1>
               <p className="text-xl font-normal mb-2">
-                {`${eventStartMonthName} ${eventStartDay}, ${eventStartYear}` === `${eventEndMonthName} ${eventEndDay}, ${eventEndYear}` ? `${eventStartMonthName} ${eventStartDay}, ${eventStartYear}: ${eventStartHour}:${eventStartMinute} - ${eventEndHour}:${eventEndMinute}` : `${eventStartMonthName} ${eventStartDay}, ${eventStartYear} - ${eventEndMonthName} ${eventEndDay}, ${eventEndYear}`}
+                Saturday: <span>12:00pm - 3:00pm</span>
               </p>
             </div>
             <div className="mb-4">
@@ -131,19 +94,19 @@ const ManageEventDetails = () => {
               <div>
                 <div>
                   <small className="text-[10px]">Amt of ticket sold</small>
-                  <h1 className="text-2xl">$0</h1>
+                  <h1 className="text-2xl">$100</h1>
                 </div>
               </div>
               <div>
                 <div>
                   <small className="text-[10px]">No. of ticket sold</small>
-                  <h1 className="text-2xl">0</h1>
+                  <h1 className="text-2xl">100</h1>
                 </div>
               </div>
               <div>
                 <div>
                   <small className="text-[10px]">No. of attendees</small>
-                  <h1 className="text-2xl">0</h1>
+                  <h1 className="text-2xl">100</h1>
                 </div>
               </div>
             </div>
