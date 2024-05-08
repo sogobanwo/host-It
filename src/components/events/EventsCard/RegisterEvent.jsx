@@ -13,19 +13,16 @@ const RegisterationCard = ({ setShowPopup, edit, price, type, timestamp, id }) =
   return (
     <Dialog>
       <div className="bg-[#f5f5ff] flex flex-col justify-center items-center w-[85%] mdl:w-80 py-6 px-6 rounded-3xl mt-4 mdl:mt-14">
-        <div className="mb-8">
-          <p className="text-cardText mb-2 mdl:inline hidden">Date & Time</p>
-          <h1 className="text-cardText text-xl">{`${time} | ${monthDay}, ${monthName} ${year}`}</h1>
-        </div>
+        
         <div className="mdl:mb-8">
           <div className="flex gap-2 justify-center items-center mx-[5%] mdl:mx-0">
             <DialogTrigger
-              className="flex justify-center items-center w-64 p-2  mdl:h-14 text-white mdl:mb-3 bg-deepPurple rounded-full hover:bg-[#fff] hover:text-deepPurple hover:border hover:border-deepPurple"
+              className="flex justify-center items-center w-64 p-2  mdl:h-14 text-white mdl:mb-3 bg-deepBlue rounded-full hover:bg-[#fff] hover:text-deepBlue hover:border hover:border-deepBlue"
               onClick={() => {
-                !edit && setShowPopup((oldState) => !oldState);
+                edit && setShowPopup((oldState) => !oldState);
               }}
             >
-              {!edit ? (
+              {edit ? (
                 <div className="flex gap-4 pt-1">
                   <img
                     src={"/icons/edit.png"}
@@ -37,15 +34,7 @@ const RegisterationCard = ({ setShowPopup, edit, price, type, timestamp, id }) =
                 </div>
               ) : (
                 (() => {
-                  // eslint-disable-next-line
-                  switch (type) {
-                    case "free":
-                      return "Book Event (Free)";
-                    case "paid":
-                      return `Book Event (${price} ETH)`;
-                    case "private":
-                      return "Request to attend";
-                  }
+                     "Book Event (Free)";
                 })()
               )}
             </DialogTrigger>
@@ -68,7 +57,7 @@ const RegisterationCard = ({ setShowPopup, edit, price, type, timestamp, id }) =
                   } gap-4 justify-center items-center w-64 h-14 bg-[f5f5ff] border border-deepPurple text-deepPurple rounded-full hover:bg-deepPurple hover:text-[#fff] mdl:flex`}
               >
                 <img src={"/icons/plus-large.svg"} alt="" width={20} height={20} />{" "}
-                Add to Whislist{" "}
+                Add links{" "}
               </DialogTrigger>
           }
         </div>
