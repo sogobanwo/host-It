@@ -2,8 +2,11 @@ import React from "react";
 import QRCode from "react-qr-code";
 import { extractTimestampInfo } from "../../../utils/helpers";
 import { events } from "../../CONSTANT";
+import useGetAllUserTicket from "../../../Functions/useGetAllUserTicket";
 
 const Ticket = () => {
+  const sogo = useGetAllUserTicket()
+  console.log(sogo)
   return (
     <div className="flex flex-row gap-6 flex-wrap w-full">
       {events.map((items) => {
