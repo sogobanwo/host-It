@@ -6,7 +6,7 @@ import { useRef } from 'react';
 import { CreateEventSchema } from '../../../helpers/formValidation';
 import axiosInstance from '../../../helpers/AxiosConfig';
 import { ethers } from 'ethers';
-import { useWeb3ModalProvider } from '@web3modal/ethers/react';
+import { useWeb3ModalAccount, useWeb3ModalProvider } from '@web3modal/ethers/react';
 import toast from 'react-hot-toast';
 import {sha256} from 'crypto-hash';
 
@@ -15,6 +15,7 @@ const CreateEvent = () => {
   const fileRef = useRef(null);
   const [preview, setPreview] = useState(null);
   const { walletProvider } = useWeb3ModalProvider()
+  const {address} = useWeb3ModalAccount()
 
   return (
     <EventLayout>
@@ -44,7 +45,8 @@ const CreateEvent = () => {
             start_time: "00:00",
             end_time: "00:00",
             secret_code: "",
-            signature: ""
+            // signature: "",
+            organizer: address,
           }}
         validationSchema={CreateEventSchema}
         onSubmit={async (values, { setSubmitting }) => {
@@ -68,11 +70,13 @@ const CreateEvent = () => {
             const signer = await provider.getSigner();
             const signature = await signer.signMessage(JSON.stringify(values))
             console.log(values)
-            // await axiosInstance.post('/events', formData);
+            await axiosInstance.post('/events', formData);
             toast.remove(toast1);
             toast.success("Event Created")
             // console.log(formData)
           } catch (error) {
+            toast.remove(toast1)
+            toast.error("error creating event")
             console.log(error)
           }
         }
@@ -230,29 +234,22 @@ const CreateEvent = () => {
                 Event Banner
               </label>
               <input
-                type="file"
-                name="image"
-                accept="image/*"
-                ref={fileRef} // Assign the ref to the file input
-                onChange={(event) => {
-                  const file = event.target.files[0];
-                  const reader = new FileReader();
-                  reader.onloadend = () => {
-                    // Update the image preview
-                    setPreview(reader.result);
-                  };
-                  reader.readAsDataURL(file);
-                  // Update Formik values directly
-                  handleChange({
-                    target: {
-                      name: "image",
-                      value: file,
-                    },
-                  });
-                }}
-                onBlur={handleBlur}
-                className="text-white rounded-lg h-12 p-4 text-opacity-60 text-base font-normal leading-none font-mono bg-transparent border"
-              />
+  type="file"
+  name="image"
+  accept="image/*"
+  ref={fileRef}
+  onChange={(event) => {
+    const file = event.target.files[0];
+    handleChange({
+      target: {
+        name: "image",
+        value: file, // Pass the file object itself
+      },
+    });
+  }}
+  onBlur={handleBlur}
+  className="text-white rounded-lg h-12 p-4 text-opacity-60 text-base font-normal leading-none font-mono bg-transparent border"
+/>
               {preview && <img src={preview} alt="Preview" className="w-[200px] h-[200px] mt-2" />}
               <div className='text-red'>
                 {errors.image && touched.image && errors.image}
