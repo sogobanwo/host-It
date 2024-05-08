@@ -62,7 +62,7 @@ const ManageEventDetails = () => {
               <p className=" text-xl font-normal">{event.data.description}</p>
             </div>
             <div className="mb-4">
-              <h1 className="text-xl font-bold mb-2">Date & Time</h1>
+              <h1 className="text-xl font-bold mb-2">Hours</h1>
               <p className="text-xl font-normal mb-2">
                 {/* {`${eventStartMonthName} ${eventStartDay}, ${eventStartYear}` === `${eventEndMonthName} ${eventEndDay}, ${eventEndYear}` ? `${eventStartMonthName} ${eventStartDay}, ${eventStartYear}: ${eventStartHour}:${eventStartMinute} - ${eventEndHour}:${eventEndMinute}` : `${eventStartMonthName} ${eventStartDay}, ${eventStartYear} - ${eventEndMonthName} ${eventEndDay}, ${eventEndYear}`} */}
               </p>
