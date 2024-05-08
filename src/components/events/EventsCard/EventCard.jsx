@@ -38,7 +38,7 @@ const EventCard = ({ event }) => {
             <div className="relative h-52">
                 <div className="flex justify-between mx-4 items-center absolute top-2 right-0 left-0 z-10">
                     <p className="flex justify-center items-center bg-[#fff] text-[#5D35FF]  rounded-md absolute top-0 left-0 w-[80px] pt-1 mt-1.5">
-                        free
+                        #{eventId}
                     </p>
                     <div className="flex gap-2 absolute top-0 right-0">
                         <TransmitSqaure2 size="40" className="text- border-lightWhite bg-[#fff] p-2 rounded-full" />
@@ -89,6 +89,8 @@ const EventCard = ({ event }) => {
                                     {eventAddress}
                                 </div>
                             </div>
+
+                            {isCancelled ? <span className="text-gradientColor text-sm font-normal leading-3 mt-2 mb-3 text-blue-400">cancelled</span> : <span className="text-green-500">ongoing</span>}
                         </div>
                     </div>
                 </div>

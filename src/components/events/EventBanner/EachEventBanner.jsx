@@ -14,16 +14,21 @@ import QRCode from "react-qr-code";
 import toast from "react-hot-toast";
 import { useWeb3ModalAccount, useWeb3ModalProvider } from "@web3modal/ethers/react";
 import { ethers } from "ethers";
+import useGetEventTicketSupply from "../../../Functions/useGetEventTicketSupply";
 
 
 const EachEventBanner = ({ event, edit, setShowPopup, showPopup, ref }) => {
-  const { attendees, location, type, price, title, host, timestamp, eventImage, id } = event;
+
+  const totTickets = useGetEventTicketSupply()
+
+  const { attendees, location, type, price, title, organizer, timestamp, eventImage, id } = event;
   const [qrLink, setQrLink] = useState("")
 
   const {address} = useWeb3ModalAccount()
   const {walletProvider} = useWeb3ModalProvider()
   const provider = new ethers.BrowserProvider(walletProvider)
 
+  console.log(totTickets)
 
   return (
     <>
@@ -33,8 +38,8 @@ const EachEventBanner = ({ event, edit, setShowPopup, showPopup, ref }) => {
           <div className="flex flex-col justify-between mdl:w-3/5">
             <div className="flex z-50 mt-20 gap-5">
               <Dialog>
-                <DialogTrigger className="p-3 bg-[#ffffff]/70 pt-4 text-black font-black w-[200px] h-[50px] hover:text-white">Create Tickets
-                </DialogTrigger>
+               {address == organizer ? <DialogTrigger className="p-3 bg-[#ffffff]/70 pt-4 text-black font-black w-[200px] h-[50px] hover:text-white">Create Tickets
+                </DialogTrigger> : ''}
                 <DialogContent className="flex justify-center items-center">
                       <DialogHeader>
                         <DialogTitle>Create your event ticket</DialogTitle>
@@ -94,9 +99,8 @@ const EachEventBanner = ({ event, edit, setShowPopup, showPopup, ref }) => {
                                     placeholder="Enter user's address"
                                     value={values.ticketId}
                                   >
-                                    <option value={0}>Regular</option>
-                                    <option value={1}>VIP</option>
-                                    <option value={2}>VVIP</option>
+                                    
+                                    <option value={totTickets + 1}>{totTickets + 1}</option>
                                   </Field>
                                   <Button
                                     type="submit"
@@ -113,8 +117,8 @@ const EachEventBanner = ({ event, edit, setShowPopup, showPopup, ref }) => {
                       </DialogHeader>
                     </DialogContent>
               </Dialog>
-              {/* <Dialog>
-                <DialogTrigger className="p-3 bg-[#ffffff]/70 text-black font-black pt-4 w-[200px] h-[50px] hover:text-white">Mint POAP</DialogTrigger>
+              <Dialog>
+              {address == organizer ? <DialogTrigger className="p-3 bg-[#ffffff]/70 text-black font-black pt-4 w-[200px] h-[50px] hover:text-white">Mint POAP</DialogTrigger> : ''}
                 {
                   qrLink === "" ?
                     <DialogContent className="flex justify-center items-center">
@@ -123,20 +127,20 @@ const EachEventBanner = ({ event, edit, setShowPopup, showPopup, ref }) => {
                         <DialogDescription>
                           <Formik
                             initialValues={{
-                              userAddr: "",
+                              email: "",
                               eventId: Number(id),
                               ticketId: 1,
                             }}
                             onSubmit={async (values, { setSubmitting }) => {
                               setSubmitting(true);
                               const formData = new FormData();
-                              formData.append("userAddr", values.userAddr);
+                              formData.append("email", values.email);
                               formData.append("eventId", values.eventId);
                               formData.append("ticketId", values.ticketId);
                               try {
                                 const signer = await provider.getSigner();
                                 const signature = await signer.signMessage(JSON.stringify(values))
-                                const response = await axiosInstance.post('/events/cliam', formData);
+                                const response = await axiosInstance.post(`/events/${values.eventId}/cliam`, formData);
                                 setQrLink(response.data.data)
                                 console.log(response.data.data)
                                 console.log(values)
@@ -150,7 +154,7 @@ const EachEventBanner = ({ event, edit, setShowPopup, showPopup, ref }) => {
                               <form className="space-y-4" onSubmit={handleSubmit}>
                                 <div>
                                   <Label htmlFor="links" className="text-[#222222]">
-                                    User Address
+                                    User email
                                   </Label>
                                   <Field
                                     as="input"
@@ -158,8 +162,8 @@ const EachEventBanner = ({ event, edit, setShowPopup, showPopup, ref }) => {
                                     name="userAddr"
                                     onChange={handleChange}
                                     onBlur={handleBlur}
-                                    placeholder="Enter user's address"
-                                    value={values.userAddr}
+                                    placeholder="Enter user's email"
+                                    value={values.email}
                                   />
                                   <Label htmlFor="links" className="text-[#222222]">
                                     Ticket type
@@ -207,10 +211,10 @@ const EachEventBanner = ({ event, edit, setShowPopup, showPopup, ref }) => {
                     </DialogContent>
                 }
 
-              </Dialog> */}
-              {/* <Dialog>
-                <DialogTrigger className="p-3 bg-[#ffffff]/70 pt-4 text-black font-black w-[200px] h-[50px] hover:text-white">Buy Ticket
-                </DialogTrigger>
+              </Dialog>
+              <Dialog>
+               {address != organizer ? <DialogTrigger className="p-3 bg-[#ffffff]/70 pt-4 text-black font-black w-[200px] h-[50px] hover:text-white">Buy Ticket
+                </DialogTrigger> : ''}
                 <DialogContent className="flex justify-center items-center">
                       <DialogHeader>
                         <DialogTitle>Choose your preferred ticket</DialogTitle>
@@ -276,7 +280,7 @@ const EachEventBanner = ({ event, edit, setShowPopup, showPopup, ref }) => {
                         </DialogDescription>
                       </DialogHeader>
                     </DialogContent>
-              </Dialog> */}
+              </Dialog>
             </div>
             <div className="">
               <div className="flex gap-2 items-center mb-6">
@@ -289,7 +293,7 @@ const EachEventBanner = ({ event, edit, setShowPopup, showPopup, ref }) => {
                 <div className="rounded-full">
                   <ProfileCircle className="text-white w-[32px] mdl:w-[64px]" />
                 </div>
-                <h1 className="text-lg mdl:text-xl ml-2 mt-3 text-[#fff] mdl:font-bold">{host}</h1>
+                <h1 className="text-lg mdl:text-xl ml-2 mt-3 text-[#fff] mdl:font-bold">{organizer}</h1>
               </div>
               <div className="flex items-center">
                 <Location className="text-white w-[32px] mdl:w-[64px]" />
