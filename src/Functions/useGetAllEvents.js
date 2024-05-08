@@ -22,7 +22,7 @@ const useGetAllEvents = () => {
 
             const numberOfCalls = allEvents.length
 
-            let calls =[];
+            let calls =[]
 
             for (let i = 0; i < Number(numberOfCalls); i++) {
                 calls.push({
