@@ -38,7 +38,7 @@ const EachEventBanner = ({ event, edit, setShowPopup, showPopup, ref }) => {
           <div className="flex flex-col justify-between mdl:w-3/5">
             <div className="flex z-50 mt-20 gap-5">
               <Dialog>
-               {address == organizer ? <DialogTrigger className="p-3 bg-[#ffffff]/70 pt-4 text-black font-black w-[200px] h-[50px] hover:text-white">Create Tickets
+               {address === organizer ? <DialogTrigger className="p-3 bg-[#ffffff]/70 pt-4 text-black font-black w-[200px] h-[50px] hover:text-white">Create Tickets
                 </DialogTrigger> : ''}
                 <DialogContent className="flex justify-center items-center">
                       <DialogHeader>
@@ -118,7 +118,7 @@ const EachEventBanner = ({ event, edit, setShowPopup, showPopup, ref }) => {
                     </DialogContent>
               </Dialog>
               <Dialog>
-              {address == organizer ? <DialogTrigger className="p-3 bg-[#ffffff]/70 text-black font-black pt-4 w-[200px] h-[50px] hover:text-white">Mint POAP</DialogTrigger> : ''}
+              {address === organizer ? <DialogTrigger className="p-3 bg-[#ffffff]/70 text-black font-black pt-4 w-[200px] h-[50px] hover:text-white">Mint POAP</DialogTrigger> : ''}
                 {
                   qrLink === "" ?
                     <DialogContent className="flex justify-center items-center">
@@ -213,7 +213,7 @@ const EachEventBanner = ({ event, edit, setShowPopup, showPopup, ref }) => {
 
               </Dialog>
               <Dialog>
-               {address != organizer ? <DialogTrigger className="p-3 bg-[#ffffff]/70 pt-4 text-black font-black w-[200px] h-[50px] hover:text-white">Buy Ticket
+               {address !== organizer ? <DialogTrigger className="p-3 bg-[#ffffff]/70 pt-4 text-black font-black w-[200px] h-[50px] hover:text-white">Buy Ticket
                 </DialogTrigger> : ''}
                 <DialogContent className="flex justify-center items-center">
                       <DialogHeader>
@@ -314,7 +314,7 @@ const EachEventBanner = ({ event, edit, setShowPopup, showPopup, ref }) => {
           case "free":
             return <SuccessfulBooking setShowPopup={setShowPopup} ref={ref} />;
           case "paid":
-            return <Payment setShowPopup={setShowPopup} ref={ref} host={host} price={price} />;
+            return <Payment setShowPopup={setShowPopup} ref={ref} organizer={organizer} price={price} />;
           case "private":
             return <Request setShowPopup={setShowPopup} ref={ref} />;
         }
