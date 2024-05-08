@@ -1,23 +1,45 @@
 import TagsButton from "../../../components/events/Buttons/TagsButton";
 import EventLayout from "../../../components/events/Layout/Layout";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import RegisterationCard from "../../../components/events/EventsCard/RegisterEvent";
 import EachEventBanner from "../../../components/events/EventBanner/EachEventBanner";
 import { useParams } from "react-router-dom";
 import { events } from "../../../components/CONSTANT";
+import useGetEventDetails from "../../../Functions/useGetEventDetails"
+import useGetEventTicketSupply from "../../../Functions/useGetEventTicketSupply";
+import useGetCreatedTickets from "../../../Functions/useGetCreatedTickets";
+
 
 const ManageEventDetails = () => {
+
+  const {id} = useParams()
+
+  const event = useGetEventDetails(id)
+  const ticketSupply = useGetEventTicketSupply(id)
+  const tickets = useGetCreatedTickets(id)
+
+  console.log(tickets)
+  
   const [showPopup, setShowPopup] = useState(false);
   const ref = useRef(null);
-  const param = useParams()
-  const eventId= param.id
-  const event = events.find((event) => event.id === eventId)
-  const { description, price, type} = event;
+  
+  useEffect(() => {
+    const checkIfClickedOutside = (e) => {
+      if (showPopup && ref.current && !ref.current.contains(e.target)) {
+        setShowPopup(false);
+      }
+    };
+    document.addEventListener("mousedown", checkIfClickedOutside);
+    return () => {
+      document.removeEventListener("mousedown", checkIfClickedOutside);
+    };
+  }, [showPopup]);
+ 
   return (
     <EventLayout>
        <EachEventBanner
        edit
-        event={event}
+        event={event.data}
         showPopup={showPopup}
         setShowPopup={setShowPopup}
         ref={ref}
@@ -27,8 +49,8 @@ const ManageEventDetails = () => {
           setShowPopup={setShowPopup}
           event={event}
           edit
-          price={price}
-          type={type}
+          price={0}
+          // type={type}
           ref={ref}
         />
       </div>
@@ -37,12 +59,12 @@ const ManageEventDetails = () => {
           <div>
             <div className="mb-4">
               <h1 className="text-xl  font-bold mb-2">Description</h1>
-              <p className=" text-base font-normal">{description}</p>
+              <p className=" text-xl font-normal">{event.data.description}</p>
             </div>
             <div className="mb-4">
               <h1 className="text-xl font-bold mb-2">Hours</h1>
               <p className="text-xl font-normal mb-2">
-                Saturday: <span>12:00pm - 3:00pm</span>
+                {/* {`${eventStartMonthName} ${eventStartDay}, ${eventStartYear}` === `${eventEndMonthName} ${eventEndDay}, ${eventEndYear}` ? `${eventStartMonthName} ${eventStartDay}, ${eventStartYear}: ${eventStartHour}:${eventStartMinute} - ${eventEndHour}:${eventEndMinute}` : `${eventStartMonthName} ${eventStartDay}, ${eventStartYear} - ${eventEndMonthName} ${eventEndDay}, ${eventEndYear}`} */}
               </p>
             </div>
             <div className="mb-4">
@@ -93,20 +115,20 @@ const ManageEventDetails = () => {
             <div className="flex justify-between">
               <div>
                 <div>
-                  <small className="text-[10px]">Amt of ticket sold</small>
-                  <h1 className="text-2xl">$100</h1>
+                  <small className="text-[10px]">Expected guests</small>
+                  <h1 className="text-2xl">{ticketSupply.data}</h1>
                 </div>
               </div>
               <div>
                 <div>
                   <small className="text-[10px]">No. of ticket sold</small>
-                  <h1 className="text-2xl">100</h1>
+                  <h1 className="text-2xl">{event.data.soldTickets}</h1>
                 </div>
               </div>
               <div>
                 <div>
-                  <small className="text-[10px]">No. of attendees</small>
-                  <h1 className="text-2xl">100</h1>
+                  <small className="text-[10px]">Available Tickets</small>
+                  <h1 className="text-2xl">{ticketSupply.data - event.data.soldTickets}</h1>
                 </div>
               </div>
             </div>

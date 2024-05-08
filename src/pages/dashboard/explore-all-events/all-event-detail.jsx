@@ -3,56 +3,56 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import EventLayout from '../../../components/events/Layout/Layout';
 import TagsButton from '../../../components/events/Buttons/TagsButton';
-import useGetAllEvents from '../../../Functions/useGetAllEvents';
+// import useGetAllEvents from '../../../Functions/useGetAllEvents';
 
 
 const AllEventDetail = () => {
-  const events = useGetAllEvents();
-  console.log(events)
+  // const events = useGetAllEvents();
+  // console.log(events)
 
-  const similarEvents = events.data.slice(0, 4);
-  const [showPopup, setShowPopup] = useState(false);
-  const ref = useRef(null);
-  const param = useParams()
-  const eventid = param.id
-  let event;
-  let startTime, endTime, description, eventAddress
+  // const similarEvents = events.data.slice(0, 4);
+  // const [showPopup, setShowPopup] = useState(false);
+  // const ref = useRef(null);
+  // const param = useParams()
+  // const eventid = param.id
+  // let event;
+  // let startTime, endTime, description, eventAddress
 
-  if (!events.loading) {
-    event = events.data.find((event) => event.eventId === Number(eventid));
-    if (event) {
-      ({  startTime, endTime, description, eventAddress} = event);
-    }
-  }
-  const startDate = new Date(startTime * 1000);
-  const eventStartYear = startDate.getFullYear();
-  const eventStartMonth = startDate.getMonth();
-  const eventStartMonthName = ["Jan", "Feb", "Mar", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec",
-  ][eventStartMonth];
-  const eventStartDay = startDate.getDate();
-  const eventStartHour = startDate.getHours();
-  const eventStartMinute = startDate.getMinutes();
+  // if (!events.loading) {
+  //   event = events.data.find((event) => event.eventId === Number(eventid));
+  //   if (event) {
+  //     ({  startTime, endTime, description, eventAddress} = event);
+  //   }
+  // }
+  // const startDate = new Date(startTime * 1000);
+  // const eventStartYear = startDate.getFullYear();
+  // const eventStartMonth = startDate.getMonth();
+  // const eventStartMonthName = ["Jan", "Feb", "Mar", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec",
+  // ][eventStartMonth];
+  // const eventStartDay = startDate.getDate();
+  // const eventStartHour = startDate.getHours();
+  // const eventStartMinute = startDate.getMinutes();
 
-  const endDate = new Date(endTime * 1000);
-  const eventEndYear = endDate.getFullYear();
-  const eventEndMonth = endDate.getMonth();
-  const eventEndMonthName = ["Jan", "Feb", "Mar", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec",
-  ][eventEndMonth];
-  const eventEndDay = endDate.getDate();
-  const eventEndHour = endDate.getHours();
-  const eventEndMinute = endDate.getMinutes();
+  // const endDate = new Date(endTime * 1000);
+  // const eventEndYear = endDate.getFullYear();
+  // const eventEndMonth = endDate.getMonth();
+  // const eventEndMonthName = ["Jan", "Feb", "Mar", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec",
+  // ][eventEndMonth];
+  // const eventEndDay = endDate.getDate();
+  // const eventEndHour = endDate.getHours();
+  // const eventEndMinute = endDate.getMinutes();
 
-  useEffect(() => {
-    const checkIfClickedOutside = (e) => {
-      if (showPopup && ref.current && !ref.current.contains(e.target)) {
-        setShowPopup(false);
-      }
-    };
-    document.addEventListener("mousedown", checkIfClickedOutside);
-    return () => {
-      document.removeEventListener("mousedown", checkIfClickedOutside);
-    };
-  }, [showPopup]);
+  // useEffect(() => {
+  //   const checkIfClickedOutside = (e) => {
+  //     if (showPopup && ref.current && !ref.current.contains(e.target)) {
+  //       setShowPopup(false);
+  //     }
+  //   };
+  //   document.addEventListener("mousedown", checkIfClickedOutside);
+  //   return () => {
+  //     document.removeEventListener("mousedown", checkIfClickedOutside);
+  //   };
+  // }, [showPopup]);
   return (
     <EventLayout>
       {/* <EachEventBanner
@@ -73,12 +73,12 @@ const AllEventDetail = () => {
           <div>
             <div className="mb-4">
               <h1 className="text-xl  font-bold mb-2">Description</h1>
-              <p className=" text-base font-normal">{description}</p>
+              {/* <p className=" text-base font-normal">{description}</p> */}
             </div>
             <div className="mb-4">
               <h1 className="text-xl font-bold mb-2">Date & Time</h1>
               <p className="text-xl font-normal mb-2">
-                {`${eventStartMonthName} ${eventStartDay}, ${eventStartYear}` === `${eventEndMonthName} ${eventEndDay}, ${eventEndYear}` ? `${eventStartMonthName} ${eventStartDay}, ${eventStartYear}: ${eventStartHour}:${eventStartMinute} - ${eventEndHour}:${eventEndMinute}` : `${eventStartMonthName} ${eventStartDay}, ${eventStartYear} - ${eventEndMonthName} ${eventEndDay}, ${eventEndYear}`}
+                {/* {`${eventStartMonthName} ${eventStartDay}, ${eventStartYear}` === `${eventEndMonthName} ${eventEndDay}, ${eventEndYear}` ? `${eventStartMonthName} ${eventStartDay}, ${eventStartYear}: ${eventStartHour}:${eventStartMinute} - ${eventEndHour}:${eventEndMinute}` : `${eventStartMonthName} ${eventStartDay}, ${eventStartYear} - ${eventEndMonthName} ${eventEndDay}, ${eventEndYear}`} */}
               </p>
             </div>
             <div className="mb-4">
@@ -132,7 +132,7 @@ const AllEventDetail = () => {
             className="mb-5"
           />
           <h1 className="text-xl font-normal mb-2">
-            {eventAddress}
+            {/* {eventAddress} */}
           </h1>
         </div>
       </div>

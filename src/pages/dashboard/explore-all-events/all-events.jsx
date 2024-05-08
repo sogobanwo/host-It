@@ -1,14 +1,23 @@
 import EventLayout from '../../../components/events/Layout/Layout'
-import React from 'react'
+import React, { useState } from 'react'
 import { FilterSearch, SearchNormal } from 'iconsax-react'
 import EventCard from '../../../components/events/EventsCard/EventCard'
 import MainButton from '../../../components/events/Buttons/MainButton'
 import useGetAllEvents from '../../../Functions/useGetAllEvents'
 import { TbLoaderQuarter } from 'react-icons/tb'
+import { Item } from '@radix-ui/react-dropdown-menu'
 
 const AllEvents = () => {
       const allEvents = useGetAllEvents();
 
+      const [activeTab, setActiveTab] = useState(0);
+
+      const cancelledEvent = allEvents.data.filter(Item => Item.isCancelled == true);
+
+      const ongoingEvent = allEvents.data.filter(Item => Item.isCancelled != true);
+
+      console.log(allEvents)
+ 
   return (
     <EventLayout>
       {
@@ -42,19 +51,33 @@ const AllEvents = () => {
             </div>
             <div className="flex gap-3 mb-2 px-3 overflow-x-scroll w-screen mdl:w-full ">
               <MainButton
-                title={"All Events"}
+                title={`All Events (${allEvents.data.length})`}
                 link={"/"}
                 active={true}
+                handleTab={() => { setActiveTab(0)}}
               />
-              <MainButton title={"Today"} link={"/"} />
-              <MainButton title={"Free"} link={"/"} />
+              <MainButton title={`ongoing (${ongoingEvent.length})`}  handleTab={() => { setActiveTab(2)}} />
+              <MainButton title={`canceled (${cancelledEvent.length})`} handleTab={() => { setActiveTab(3)}} />
               <MainButton title={"Paid"} link={"/"} />
               <MainButton title={"Private"} link={"/"} />
 
             </div>
 
             <div className="overflow-y-scroll mb-5 flex flex-col items-center justify-center mdl:flex-row  mdl:flex-wrap gap-3 mdl:ml-3 -ml-3">
-              {allEvents.data.map((event, index) => (
+              {activeTab == 0 && allEvents.data.map((event, index) => (
+                <div key={index} className="w-[80%] mdl:w-[420px]">
+                  <EventCard key={index} event={event} />
+                </div>
+              ))}
+
+
+            {activeTab == 2 && ongoingEvent.map((event, index) => (
+                <div key={index} className="w-[80%] mdl:w-[420px]">
+                  <EventCard key={index} event={event} />
+                </div>
+              ))}
+
+            {activeTab == 3 && cancelledEvent.map((event, index) => (
                 <div key={index} className="w-[80%] mdl:w-[420px]">
                   <EventCard key={index} event={event} />
                 </div>
