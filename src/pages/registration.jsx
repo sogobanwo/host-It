@@ -49,7 +49,6 @@ const Resigtration = () => {
       await register.create(address, ensName, cid);
     } finally {
       setIsLoading(false);
-      navigate("/dashboard")
     }
   };
 
