@@ -271,10 +271,10 @@ const EachEventBanner = ({ edit, setShowPopup, showPopup, ref }) => {
                                     const signer = await provider.getSigner();
                                     const signature = await signer.signMessage(JSON.stringify(values))
                                     const response = await axiosInstance.post(`/events/${eventId}/verify-cliam`, formData);
-                                    setQrLink(response.data)
+                                    setQrLink(response.data.data)
                                     toast.remove(toast1)
                                     const toast2 = toast.success("Email Verified")
-                                    console.log(response.data)
+                                    console.log(response.data.data)
                                     console.log(qrLink)
                                     console.log(values)
                                     console.log(formData);
