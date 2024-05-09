@@ -265,7 +265,7 @@ const EachEventBanner = ({ edit, setShowPopup, showPopup, ref }) => {
                                   setSubmitting(true);
                                   const formData = new FormData();
                                   formData.append("email", values.email);
-                                  formData.append("ticketId", values.ticketId);
+                                  formData.append("secretCode", values.secretCode);
                                   const toast1 = toast.loading("Veryfying your mail")
                                   try {
                                     const signer = await provider.getSigner();
@@ -296,7 +296,6 @@ const EachEventBanner = ({ edit, setShowPopup, showPopup, ref }) => {
                                       <Field
                                         as="input"
                                         className="w-full font-mono mb-6 p-2 border"
-                                        
                                         name="secretCode"
                                         onChange={handleChange}
                                         onBlur={handleBlur}
