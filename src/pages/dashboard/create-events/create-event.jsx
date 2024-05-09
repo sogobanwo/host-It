@@ -44,7 +44,7 @@ const CreateEvent = () => {
             requested_codes: 10,
             start_time: "00:00",
             end_time: "00:00",
-            secret_code: "",
+            // secret_code: "",
             // signature: "",
             organizer: address,
           }}

@@ -7,7 +7,9 @@ import { useParams } from "react-router-dom";
 import useGetEventDetails from "../../../Functions/useGetEventDetails"
 import useGetEventTicketSupply from "../../../Functions/useGetEventTicketSupply";
 import useGetCreatedTickets from "../../../Functions/useGetCreatedTickets";
-import { FacebookShareButton, LinkedinShareButton, TwitterShareButton } from "react-share";
+import FacebookShare from "../../../components/Share/FacebookShare";
+import TwitterShare from "../../../components/Share/TwitterShare";
+import LinkedINShare from "../../../components/Share/LinkedInShare";
 
 
 const ManageEventDetails = () => {
@@ -79,31 +81,10 @@ const ManageEventDetails = () => {
             <div className="mb-4">
               <h1 className="text-xl font-bold mb-2">Share with Friends</h1>
               <div className="flex gap-4">
-                <img
-                  src={"/icons/Facebook.svg"}
-                  width={32}
-                  height={32}
-                  alt="facebook"
-                />
-                <img
-                  src={"/icons/Instagram.svg"}
-                  width={32}
-                  height={32}
-                  alt="instagram"
-                />
-                <img
-                  src={"/icons/Twitter.svg"}
-                  width={32}
-                  height={32}
-                  alt="twitter"
-                />
-                <img
-                  src={"/icons/Copy.svg"}
-                  width={20}
-                  height={20}
-                  alt="twitter"
-                  className="w-[32px] h-[32px] bg-white rounded-full p-1"
-                />
+             <FacebookShare />
+              <TwitterShare />
+              <LinkedINShare />
+                
               </div>
 
             </div>
