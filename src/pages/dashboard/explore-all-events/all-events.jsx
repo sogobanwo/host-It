@@ -57,9 +57,6 @@ const AllEvents = () => {
               />
               <MainButton title={`ongoing (${ongoingEvent.length})`}  handleTab={() => { setActiveTab(2)}} />
               <MainButton title={`canceled (${cancelledEvent.length})`} handleTab={() => { setActiveTab(3)}} />
-              <MainButton title={"Paid"} link={"/"} />
-              <MainButton title={"Private"} link={"/"} />
-
             </div>
 
             <div className="overflow-y-scroll mb-5 flex flex-col items-center justify-center mdl:flex-row  mdl:flex-wrap gap-3 mdl:ml-3 -ml-3">
@@ -68,7 +65,6 @@ const AllEvents = () => {
                   <EventCard key={index} event={event} />
                 </div>
               ))}
-
 
             {activeTab === 2 && ongoingEvent.map((event, index) => (
                 <div key={index} className="w-[80%] mdl:w-[420px]">

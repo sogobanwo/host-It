@@ -5,24 +5,30 @@ import EventLayout from '../../../components/events/Layout/Layout';
 import TagsButton from '../../../components/events/Buttons/TagsButton';
 import useGetAllEvents from '../../../Functions/useGetAllEvents';
 import EachEventBanner from '../../../components/events/EventBanner/EachEventBanner';
+import {
+  FacebookShareButton,
+  LinkedinShareButton,
+  TwitterShareButton,
+} from "react-share";
 
 
 const AllEventDetail = () => {
   const events = useGetAllEvents();
   console.log(events)
 
+  const baseURL=process.env.REACT_APP_baseURL
   const similarEvents = events.data.slice(0, 4);
   const [showPopup, setShowPopup] = useState(false);
   const ref = useRef(null);
   const param = useParams()
   const eventid = param.id
   let event;
-  let startTime, endTime, description, eventAddress
+  let startTime, endTime, description, eventAddress, eventId
 
   if (!events.loading) {
     event = events.data.find((event) => event.eventId === Number(eventid));
     if (event) {
-      ({  startTime, endTime, description, eventAddress} = event);
+      ({  startTime, endTime, description, eventAddress, eventId} = event);
     }
   }
   console.log(event)
@@ -94,30 +100,12 @@ const AllEventDetail = () => {
             <div className="mb-4">
               <h1 className="text-xl font-bold mb-2">Share with Friends</h1>
               <div className="flex gap-4">
-                <img
-                  src={"/icons/Facebook.svg"}
-                  width={32}
-                  height={32}
-                  alt="facebook"
+                <FacebookShareButton
+                  size={32} round={true} url={`${baseURL}/all-event/${eventId}`}
                 />
-                <img
-                  src={"/icons/Instagram.svg"}
-                  width={32}
-                  height={32}
-                  alt="instagram"
-                />
-                <img
-                  src={"/icons/Twitter.svg"}
-                  width={32}
-                  height={32}
-                  alt="twitter"
-                />
-                <img
-                  src={"/icons/Copy.svg"}
-                  width={20}
-                  height={20}
-                  alt="twitter"
-                  className="w-[32px] h-[32px] bg-white rounded-full p-1"
+                <TwitterShareButton size={32} round={true} url={`${baseURL}/all-event/${eventId}`}/>
+
+                <LinkedinShareButton size={32} round={true} url={`${baseURL}/all-event/${eventId}`}
                 />
               </div>
             </div>

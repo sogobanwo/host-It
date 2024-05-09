@@ -1,34 +1,19 @@
 import React, { useState } from "react";
-import { extractTimestampInfo } from "../../../utils/helpers";
 import { Clock, Heart, Location, TransmitSqaure2 } from "iconsax-react";
 import { Link } from "react-router-dom";
 import { EventAttendees } from "./EventAttendees";
 import { useWeb3ModalAccount } from "@web3modal/ethers/react";
 
 const EventCard = ({ event }) => {
-    const { organizer, eventName, eventId, description, eventAddress, date, startTime, endTime, virtualEvent, privateEvent, totalTickets, soldTickets, isCancelled } = event;
-  const eventDate = new Date(date * 1000);
-  const eventYear = eventDate.getFullYear();
-  const eventMonth = eventDate.getMonth();
-  const monthName = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "April",
-    "May",
-    "June",
-    "July",
-    "Aug",
-    "Sept",
-    "Oct",
-    "Nov",
-    "Dec",
-  ][eventMonth];
-  const eventDay = eventDate.getDate();
-  const eventHour = eventDate.getHours();
-  const eventMinute = eventDate.getMinutes();
+    const { organizer, eventName, eventId, eventAddress, date, isCancelled } = event;
+    const eventDate = new Date(date * 1000);
+    const eventMonth = eventDate.getMonth();
+    const monthName = ["Jan", "Feb", "Mar", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec" ][eventMonth];
+    const eventDay = eventDate.getDate();
+    const eventHour = eventDate.getHours();
+    const eventMinute = eventDate.getMinutes();
     const [isHovered, setIsHovered] = useState(false);
-    const {address} = useWeb3ModalAccount();
+    const { address } = useWeb3ModalAccount();
 
 
     return (
@@ -90,14 +75,14 @@ const EventCard = ({ event }) => {
                                 </div>
                             </div>
 
-                            {isCancelled ? <span className="text-gradientColor text-sm font-normal leading-3 mt-2 mb-3 text-blue-400">cancelled</span> : <span className="text-green-500">ongoing</span>}
+                            {isCancelled ? <span className="text-gradientColor text-sm font-normal leading-3 mt-2 mb-3 text-red">cancelled</span> : <span className="text-green-500">Upcoming</span>}
                         </div>
                     </div>
                 </div>
-              </div>
             </div>
+        </div>
 
-           );
+    );
 
 
 };

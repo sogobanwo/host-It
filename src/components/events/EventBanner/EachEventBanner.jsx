@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { EventAttendees } from "../EventsCard/EventAttendees";
 import { Location, ProfileCircle } from "iconsax-react";
 import RegisterationCard from "../EventsCard/RegisterEvent";
 import SuccessfulBooking from "../EventModals/Successful-booking";

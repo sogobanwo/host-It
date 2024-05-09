@@ -7,10 +7,12 @@ import EventAction from './EventActions';
 import { useWeb3ModalAccount } from '@web3modal/ethers/react';
 
 const EventDetailsCard = ({ event, edit }) => {
-  const { organizer, eventName, eventId, description, eventAddress, date, startTime, endTime, virtualEvent, privateEvent, totalTickets, soldTickets, isCancelled } = event;
+  const { organizer, eventName, eventId, eventAddress, date} = event;
   const eventDate = new Date(date * 1000);
   const eventYear = eventDate.getFullYear();
-  const eventMonth = eventDate.getMonth() + 1;
+  const eventDateMonth = eventDate.getMonth();
+  const eventMonth = ["Jan", "Feb", "Mar", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"][eventDateMonth];
+  console.log(eventMonth)
   const eventDay = eventDate.getDate();
   const eventHour = eventDate.getHours();
   const eventMinute = eventDate.getMinutes();
@@ -37,7 +39,7 @@ const EventDetailsCard = ({ event, edit }) => {
             <p className="text-white text-sm mdl:text-base font-normal">
               {eventMonth}
             </p>
-            <div className="w-3 mdl:w-5 h-[1px] bg-amberYellow my-1"></div>
+            <div className="w-3 mdl:w-5 h-[1px] bg-amberYellow my-1 mb-4"></div>
             <div className="text-white text-2xl mdl:text-4xl font-normal">
               {eventDay}
             </div>

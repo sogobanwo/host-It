@@ -4,13 +4,14 @@ import React, { useEffect, useRef, useState } from "react";
 import RegisterationCard from "../../../components/events/EventsCard/RegisterEvent";
 import EachEventBanner from "../../../components/events/EventBanner/EachEventBanner";
 import { useParams } from "react-router-dom";
-import { events } from "../../../components/CONSTANT";
 import useGetEventDetails from "../../../Functions/useGetEventDetails"
 import useGetEventTicketSupply from "../../../Functions/useGetEventTicketSupply";
 import useGetCreatedTickets from "../../../Functions/useGetCreatedTickets";
+import { FacebookShareButton, LinkedinShareButton, TwitterShareButton } from "react-share";
 
 
 const ManageEventDetails = () => {
+  const baseURL=process.env.REACT_APP_baseURL
 
   const {id} = useParams()
 
@@ -78,31 +79,12 @@ const ManageEventDetails = () => {
             <div className="mb-4">
               <h1 className="text-xl font-bold mb-2">Share with Friends</h1>
               <div className="flex gap-4">
-                <img
-                  src={"/icons/Facebook.svg"}
-                  width={32}
-                  height={32}
-                  alt="facebook"
+              <FacebookShareButton
+                  size={32} round={true} url={`${baseURL}/all-event/${id}`}
                 />
-                <img
-                  src={"/icons/Instagram.svg"}
-                  width={32}
-                  height={32}
-                  alt="instagram"
-                />
-                <img
-                  src={"/icons/Twitter.svg"}
-                  width={32}
-                  height={32}
-                  alt="twitter"
-                />
-                <img
-                  src={"/icons/Copy.svg"}
-                  width={20}
-                  height={20}
-                  alt="twitter"
-                  className="w-[32px] h-[32px] bg-white rounded-full p-1"
-                />
+                <TwitterShareButton size={32} round={true} url={`${baseURL}/all-event/${id}`}/>
+
+                <LinkedinShareButton size={32} round={true} url={`${baseURL}/all-event/${id}`}/>
               </div>
             </div>
           </div>
