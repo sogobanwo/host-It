@@ -255,7 +255,7 @@ const EachEventBanner = ({ edit, setShowPopup, showPopup, ref }) => {
                         return <DialogContent className="flex justify-center items-center">
                           <DialogHeader>
                             <DialogTitle>Claim POAP</DialogTitle>
-                            {qrLink ? <DialogDescription>
+                            {qrLink === "" ? <DialogDescription>
                               <Formik
                                 initialValues={{
                                   email: email,
