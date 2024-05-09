@@ -79,12 +79,9 @@ const ManageEventDetails = () => {
             <div className="mb-4">
               <h1 className="text-xl font-bold mb-2">Share with Friends</h1>
               <div className="flex gap-4">
-              <FacebookShareButton
-                  size={32} round={true} url={`${baseURL}/all-event/${id}`}
-                />
-                <TwitterShareButton size={32} round={true} url={`${baseURL}/all-event/${id}`}/>
-
-                <LinkedinShareButton size={32} round={true} url={`${baseURL}/all-event/${id}`}/>
+              <FacebookShareButton size={32} round={true} url={`${baseURL}/all-event/${id}`}/>
+              <TwitterShareButton size={32} round={true} url={`${baseURL}/all-event/${id}`}/>
+              <LinkedinShareButton size={32} round={true} url={`${baseURL}/all-event/${id}`}/>
               </div>
             </div>
           </div>
