@@ -53,7 +53,7 @@ const EachEventBanner = ({ edit, setShowPopup, showPopup, ref }) => {
   return (
     <>
       <div className="relative w-screen mdl:w-[100%] h-[300px] mdl:h-[446px]">
-        {/* <img src={eventImage} alt="Event" className="absolute inset-0 w-full h-full object-cover" /> */}
+        <img src={"/images/event-banner.png"} alt="Event" className="absolute inset-0 w-full h-full object-cover" />
         <div className="flex pb-4 px-6 justify-between absolute inset-0">
           <div className="flex flex-col justify-between mdl:w-3/5">
             <div className="flex z-50 mt-20 gap-5">
