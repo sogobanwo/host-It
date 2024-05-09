@@ -8,7 +8,6 @@ import axiosInstance from "../../../helpers/AxiosConfig";
 import toast from "react-hot-toast";
 
 const RegisterationCard = ({ setShowPopup, edit, price, type, timestamp, id }) => {
-  const { monthDay, monthName, time, year } = extractTimestampInfo(timestamp);
 
   return (
     <Dialog>
@@ -99,22 +98,21 @@ const RegisterationCard = ({ setShowPopup, edit, price, type, timestamp, id }) =
             <Formik
               initialValues={{
                 links: "",
-                eventId: Number(id),
               }}
               onSubmit={async (values, { setSubmitting }) => {
                 setSubmitting(true);
                 const toast1 = toast.loading('Adding Links')
                 const formData = new FormData();
                 formData.append("links", values.links);
-                formData.append("id", values.id);
-                
                 try {
-                  await axiosInstance.post('/links/addlinks', formData);
+                  await axiosInstance.post(`/links/${id}/addlinks`, formData);
                   toast.remove(toast1)
                   toast.success("Links Added")
                   console.log(values)
                   console.log(formData);
                 } catch (error) {
+                  toast.remove(toast1)
+                  toast.error("Error adding links")
                   console.log(error);
                 }
               }}
