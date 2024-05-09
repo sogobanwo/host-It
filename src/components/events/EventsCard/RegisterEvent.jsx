@@ -11,6 +11,9 @@ const RegisterationCard = ({ setShowPopup, edit, price, type, timestamp, id }) =
 
   return (
     <Dialog>
+      {
+        edit &&
+     
       <div className="bg-[#f5f5ff] flex flex-col justify-center items-center w-[85%] mdl:w-80 py-6 px-6 rounded-3xl mt-4 mdl:mt-14">
         
         <div className="mdl:mb-8">
@@ -91,6 +94,7 @@ const RegisterationCard = ({ setShowPopup, edit, price, type, timestamp, id }) =
           </div>
         </div>
       </div>
+       }
       <DialogContent className="flex justify-center items-center">
         <DialogHeader>
           <DialogTitle>Add POAP Links</DialogTitle>

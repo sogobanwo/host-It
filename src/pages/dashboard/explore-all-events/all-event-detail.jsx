@@ -100,14 +100,33 @@ const AllEventDetail = () => {
             <div className="mb-4">
               <h1 className="text-xl font-bold mb-2">Share with Friends</h1>
               <div className="flex gap-4">
-                <FacebookShareButton
-                  size={32} round={true} url={`${baseURL}/all-event/${eventId}`}
+                <img
+                  src={"/icons/Facebook.svg"}
+                  width={32}
+                  height={32}
+                  alt="facebook"
                 />
-                <TwitterShareButton size={32} round={true} url={`${baseURL}/all-event/${eventId}`}/>
-
-                <LinkedinShareButton size={32} round={true} url={`${baseURL}/all-event/${eventId}`}
+                <img
+                  src={"/icons/Instagram.svg"}
+                  width={32}
+                  height={32}
+                  alt="instagram"
+                />
+                <img
+                  src={"/icons/Twitter.svg"}
+                  width={32}
+                  height={32}
+                  alt="twitter"
+                />
+                <img
+                  src={"/icons/Copy.svg"}
+                  width={20}
+                  height={20}
+                  alt="twitter"
+                  className="w-[32px] h-[32px] bg-white rounded-full p-1"
                 />
               </div>
+
             </div>
           </div>
           <div></div>

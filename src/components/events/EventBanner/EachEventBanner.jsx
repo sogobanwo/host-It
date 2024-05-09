@@ -205,8 +205,8 @@ const EachEventBanner = ({ edit, setShowPopup, showPopup, ref }) => {
                                     const signature = await signer.signMessage(JSON.stringify(values))
                                     const response = await axiosInstance.post(`/events/${eventId}/cliam`, formData);
                                     toast.remove(toast1)
-                                    const toast2 =toast.success("secret code sent to your mail")
-                                    if (toast2){
+                                    const toast2 = toast.success("secret code sent to your mail")
+                                    if (toast2) {
                                       setFormStep(1)
                                       setEmail(values.email)
                                     }
@@ -311,7 +311,7 @@ const EachEventBanner = ({ edit, setShowPopup, showPopup, ref }) => {
                                   </form>
                                 )}
                               </Formik>
-                            </DialogDescription>: <QRCode bgColor="white" fgColor="black" value={qrLink}/>}
+                            </DialogDescription> : <QRCode bgColor="white" fgColor="black" value={qrLink} />}
                           </DialogHeader>
                         </DialogContent>
                           ;

@@ -6,8 +6,10 @@ import { useWeb3ModalAccount } from "@web3modal/ethers/react";
 import { Link } from "react-router-dom";
 import { Button } from "../../../components/ui/button"; // Add this import
 import { TbLoaderQuarter } from "react-icons/tb";
+import useGetAllUserTicket from "../../../Functions/useGetAllUserTicket";
 
 const ManageEvents = () => {
+  const tickets = useGetAllUserTicket()
   const allEvents = useGetAllEvents();
   const { address } = useWeb3ModalAccount();
   const events = allEvents.data.filter((event) => event.organizer === address);
@@ -41,7 +43,7 @@ const ManageEvents = () => {
                 <div>
                   <div>
                     <small className="text-[14px]">No. of Events</small>
-                    <h1 className="text-3xl">0</h1>
+                    <h1 className="text-3xl">{events.length}</h1>
                   </div>
                   <div>
                     <small className="text-[14px]">Amt of ticket sold</small>
@@ -55,7 +57,7 @@ const ManageEvents = () => {
                 <div>
                   <div>
                     <small className="text-[14px]">No. of event hosted</small>
-                    <h1 className="text-3xl">0</h1>
+                    <h1 className="text-3xl">{events.length}</h1>
                   </div>
                   <div>
                     <small className="text-[14px]">No. of ticket sold</small>
@@ -73,7 +75,7 @@ const ManageEvents = () => {
                   </div>
                   <div>
                     <small className="text-[14px]">No. ticket bought</small>
-                    <h1 className="text-2xl">0</h1>
+                    <h1 className="text-2xl">{tickets.data.length}</h1>
                   </div>
                   <div>
                     <small className="text-[14px]">Ave. ticket Price</small>

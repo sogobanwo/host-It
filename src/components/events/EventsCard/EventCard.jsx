@@ -3,15 +3,16 @@ import { Clock, Heart, Location, TransmitSqaure2 } from "iconsax-react";
 import { Link } from "react-router-dom";
 import { EventAttendees } from "./EventAttendees";
 import { useWeb3ModalAccount } from "@web3modal/ethers/react";
+import { formatDateTime } from "../../../helpers/formatDate";
 
 const EventCard = ({ event }) => {
-    const { organizer, eventName, eventId, eventAddress, date, isCancelled } = event;
-    const eventDate = new Date(date * 1000);
-    const eventMonth = eventDate.getMonth();
-    const monthName = ["Jan", "Feb", "Mar", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec" ][eventMonth];
-    const eventDay = eventDate.getDate();
-    const eventHour = eventDate.getHours();
-    const eventMinute = eventDate.getMinutes();
+    const { organizer, eventName, eventId, eventAddress, date, isCancelled, startTime, endTime } = event;
+    const startDate = new Date(startTime * 1000);
+    const startDateTime = formatDateTime(startTime)
+  
+                  const eventStartMonth = startDate.getMonth();
+                  const eventStartMonthName = ["Jan", "Feb", "Mar", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"][eventStartMonth];
+                  const eventStartDay = startDate.getDate();
     const [isHovered, setIsHovered] = useState(false);
     const { address } = useWeb3ModalAccount();
 
@@ -37,10 +38,10 @@ const EventCard = ({ event }) => {
                 <div className="pl-3">
                     <p className="text-gradientColor text-sm font-normal leading-3 mt-2 mb-3"
                     >
-                        {monthName}
+                        {eventStartMonthName}
                     </p>
                     <div className="text-gradientColor text-2xl font-normal leading-3">
-                        {eventDay}
+                        {eventStartDay}
                     </div>
                 </div>
 
@@ -64,7 +65,7 @@ const EventCard = ({ event }) => {
                             <div className="flex items-center">
                                 <Clock size="20" className="text- border-lightWhite" />
                                 <div className="ml-2 text-cardText text-sm font-normal leading-none">
-                                    {`${eventHour}:${eventMinute}`}
+                                    {startDateTime}
                                 </div>
                             </div>
 
