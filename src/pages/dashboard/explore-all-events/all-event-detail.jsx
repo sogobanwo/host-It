@@ -10,6 +10,9 @@ import {
   LinkedinShareButton,
   TwitterShareButton,
 } from "react-share";
+import FacebookShare from '../../../components/Share/FacebookShare';
+import TwitterShare from '../../../components/Share/TwitterShare';
+import LinkedINShare from '../../../components/Share/LinkedInShare';
 
 
 const AllEventDetail = () => {
