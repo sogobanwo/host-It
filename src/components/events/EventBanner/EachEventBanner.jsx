@@ -182,24 +182,27 @@ const EachEventBanner = ({ edit, setShowPopup, showPopup, ref }) => {
                           <Formik
                             initialValues={{
                               email: "",
-                              eventId: Number(eventId),
                               ticketId: 1,
                             }}
                             onSubmit={async (values, { setSubmitting }) => {
                               setSubmitting(true);
                               const formData = new FormData();
                               formData.append("email", values.email);
-                              formData.append("eventId", values.eventId);
                               formData.append("ticketId", values.ticketId);
+                              const toast1= toast.loading("minting POAP")
                               try {
                                 const signer = await provider.getSigner();
                                 const signature = await signer.signMessage(JSON.stringify(values))
-                                const response = await axiosInstance.post(`/events/${values.eventId}/cliam`, formData);
+                                const response = await axiosInstance.post(`/events/${eventId}/cliam`, formData);
                                 setQrLink(response.data.data)
+                                toast.remove(toast1)
+                                toast.success("secret code sent to your mail")
                                 console.log(response.data.data)
                                 console.log(values)
                                 console.log(formData);
                               } catch (error) {
+                                toast.remove(toast1)
+                                toast.error("You have not purchased a ticket")
                                 console.log(error);
                               }
                             }}
@@ -213,34 +216,18 @@ const EachEventBanner = ({ edit, setShowPopup, showPopup, ref }) => {
                                   <Field
                                     as="input"
                                     className="w-full font-mono mb-6 p-2 border"
-                                    name="userAddr"
+                                    name="email"
                                     onChange={handleChange}
                                     onBlur={handleBlur}
                                     placeholder="Enter user's email"
                                     value={values.email}
                                   />
-                                  <Label htmlFor="links" className="text-[#222222]">
-                                    Ticket type
-                                  </Label>
-                                  <Field
-                                    as="select"
-                                    className="w-full font-mono mb-6 p-2 border"
-                                    name="ticketId"
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                    placeholder="Enter user's address"
-                                    value={values.ticketId}
-                                  >
-                                    <option value={0}>Regular</option>
-                                    <option value={1}>VIP</option>
-                                    <option value={2}>VVIP</option>
-                                  </Field>
                                   <Button
                                     type="submit"
                                     disabled={isSubmitting}
                                     className="bg-[#222222] text-white w-full"
                                   >
-                                    {isSubmitting ? "Submitting Links" : "Submit"}
+                                    {isSubmitting ? "Submitting email... " : "Submit"}
                                   </Button>
                                 </div>
                               </form>
