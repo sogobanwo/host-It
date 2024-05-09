@@ -275,6 +275,7 @@ const EachEventBanner = ({ edit, setShowPopup, showPopup, ref }) => {
                                     toast.remove(toast1)
                                     const toast2 = toast.success("Email Verified")
                                     console.log(response.data)
+                                    console.log(qrLink)
                                     console.log(values)
                                     console.log(formData);
                                   } catch (error) {
