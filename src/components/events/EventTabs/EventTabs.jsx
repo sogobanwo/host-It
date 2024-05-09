@@ -5,17 +5,19 @@ import EventDetailsCard from "../EventsCard/EventDetailsCard";
 import { useWeb3ModalAccount } from "@web3modal/ethers/react";
 import { Button } from "../../ui/button";
 import { Link } from "react-router-dom";
+import useGetAllUserTicket from "../../../Functions/useGetAllUserTicket";
 
 const EventTabs = ({ pageTabs, data }) => {
   const [tabIndex, setTabIndex] = useState(0);
   const [filteredEvents, setFilteredEvents] = useState([]);
   const { address } = useWeb3ModalAccount();
+  const attendingEvent = useGetAllUserTicket()
 
   useEffect(() => {
     if (pageTabs[tabIndex] === "Hosting") {
       setFilteredEvents(data.filter((event) => event.organizer === address));
     } else if (pageTabs[tabIndex] === "Attending") {
-      setFilteredEvents(data.filter((event) => event.organizer === address));
+      setFilteredEvents(attendingEvent.data);
     } else {
       setFilteredEvents([]);
     }
