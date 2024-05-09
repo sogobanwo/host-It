@@ -270,7 +270,7 @@ const EachEventBanner = ({ edit, setShowPopup, showPopup, ref }) => {
                                   try {
                                     const signer = await provider.getSigner();
                                     const signature = await signer.signMessage(JSON.stringify(values))
-                                    const response = await axiosInstance.post(`/events/${eventId}/verify-claim`, formData);
+                                    const response = await axiosInstance.post(`/events/${eventId}/verify-cliam`, formData);
                                     setQrLink(response.data.data)
                                     toast.remove(toast1)
                                     const toast2 = toast.success("Email Verified")
