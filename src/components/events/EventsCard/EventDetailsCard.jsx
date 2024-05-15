@@ -1,23 +1,16 @@
-import { extractTimestampInfo } from '../../../utils/helpers';
 import { Clock, Location, Menu } from 'iconsax-react';
 import React, { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom';
 import { EventAttendees } from './EventAttendees';
 import EventAction from './EventActions';
 import { useWeb3ModalAccount } from '@web3modal/ethers/react';
-import { formatDateTime } from '../../../helpers/formatDate';
+import { epochToDatetime } from "datetime-epoch-conversion";
+
 
 const EventDetailsCard = ({ event, edit }) => {
   const { organizer, eventName, eventId, eventAddress, startTime, endTime} = event;
-  const startDate = new Date(startTime * 1000);
-  const startDateTime = formatDateTime(startTime)
-
-                const eventStartMonth = startDate.getMonth();
-                const eventStartMonthName = ["Jan", "Feb", "Mar", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"][eventStartMonth];
-                const eventStartDay = startDate.getDate();
-            
-
-           
+  const {day, month,  time, year} = epochToDatetime(startTime)
+   
   const [showPopup, setShowPopup] = useState(false);
   const ref = useRef(null);
 
@@ -39,11 +32,11 @@ const EventDetailsCard = ({ event, edit }) => {
         <div className="flex justify-evenly">
           <div className="w-12">
             <p className="text-white text-sm mdl:text-base font-normal">
-              {eventStartMonthName}
+              {month}
             </p>
             <div className="w-3 mdl:w-5 h-[1px] bg-amberYellow my-1 mb-4"></div>
             <div className="text-white text-2xl mdl:text-4xl font-normal">
-              {eventStartDay}
+              {day}
             </div>
           </div>
           <div className="w-[200px] h-[100px] mr-1 mdl:mr-4">
@@ -75,7 +68,7 @@ const EventDetailsCard = ({ event, edit }) => {
                 <div className="flex items-center">
                   <Clock className='w-[16px] mdl:w-[32px]' color="#eee" />
                   <div className="ml-2 text-white text-xs mdl:text-sm font-normal leading-none">
-                  {startDateTime}
+                  {`${day} ${month}`}, {`${year} ${time}`}
                   </div>
                 </div>
 
