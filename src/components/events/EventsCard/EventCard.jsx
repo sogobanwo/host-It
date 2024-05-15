@@ -8,7 +8,7 @@ import { epochToDatetime } from "datetime-epoch-conversion";
 const EventCard = ({ event }) => {
     const { organizer, eventName, eventId, eventAddress, isCancelled, startTime, endTime } = event;
     const {day, month,  time} = epochToDatetime(startTime)
-   
+   console.log(day, month, time )
     const [isHovered, setIsHovered] = useState(false);
     const { address } = useWeb3ModalAccount();
 
